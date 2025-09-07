@@ -1,4 +1,4 @@
-import { useMoviesStore } from "@/shared/store/use-movies-store";
+import { useMoviesStore } from "@/shared/libs/store/use-movies-store";
 import { create } from "zustand";
 
 interface MovieDetailsState {

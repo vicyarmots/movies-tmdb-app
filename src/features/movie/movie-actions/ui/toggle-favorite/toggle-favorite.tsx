@@ -6,13 +6,9 @@ import { useMovieActionsStore } from "../../model/use-movie-actions-store";
 
 type ToggleFavoriteProps = {
   isIcon?: boolean;
-};
+} & Pick<Movie, "isFavorite" | "id">;
 
-export const ToggleFavorite: FC<Pick<Movie, "isFavorite" | "id"> & ToggleFavoriteProps> = ({
-  id,
-  isFavorite,
-  isIcon = false,
-}) => {
+export const ToggleFavorite: FC<ToggleFavoriteProps> = ({ id, isFavorite, isIcon = false }) => {
   const { toggleFavorite } = useMovieActionsStore();
 
   return (

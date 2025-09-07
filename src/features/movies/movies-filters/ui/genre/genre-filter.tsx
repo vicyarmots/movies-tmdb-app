@@ -1,25 +1,6 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui/select";
 import { useMoviesFiltersStore } from "../../model/use-movies-filters-store";
-
-const genres = [
-  "Action",
-  "Adventure",
-  "Animation",
-  "Comedy",
-  "Crime",
-  "Documentary",
-  "Drama",
-  "Family",
-  "Fantasy",
-  "Horror",
-  "Music",
-  "Mystery",
-  "Romance",
-  "Science Fiction",
-  "Thriller",
-  "War",
-  "Western",
-] as const;
+import { genres } from "@/shared/utils/movies-data/movies-data";
 
 export const GenreFilter = () => {
   const { filters, setFilters } = useMoviesFiltersStore();

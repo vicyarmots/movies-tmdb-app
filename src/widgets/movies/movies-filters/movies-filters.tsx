@@ -20,7 +20,6 @@ export const MovieFilters = () => {
         </div>
         <StatusFilter />
       </div>
-
       <GenreFilter />
       <PriorityFilter />
       <SortByFilter />

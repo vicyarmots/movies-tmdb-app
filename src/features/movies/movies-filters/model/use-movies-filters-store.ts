@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import type { MovieFilters, Movie } from "@/shared/utils/movies-data/movies-data";
-import { useMoviesStore } from "@/shared/store/use-movies-store";
+import { useMoviesStore } from "@/shared/libs/store/use-movies-store";
 import { getFilteredMoviesHelper } from "../utils/movies-filters.helpers";
 
 interface FiltersState {

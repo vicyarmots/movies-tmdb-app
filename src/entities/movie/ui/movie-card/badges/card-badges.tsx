@@ -4,11 +4,9 @@ import type { Movie } from "@/shared/utils/movies-data/movies-data";
 import { Heart } from "lucide-react";
 import type { FC } from "react";
 
-export const MovieCardBadges: FC<Pick<Movie, "priority" | "isWatched" | "isFavorite">> = ({
-  isFavorite,
-  isWatched,
-  priority,
-}) => {
+type MovieCardBadgesProps = Pick<Movie, "priority" | "isWatched" | "isFavorite">;
+
+export const MovieCardBadges: FC<MovieCardBadgesProps> = ({ isFavorite, isWatched, priority }) => {
   return (
     <>
       <Badge className={`${getPriorityColor(priority)} text-white text-xs`}>{priority}</Badge>

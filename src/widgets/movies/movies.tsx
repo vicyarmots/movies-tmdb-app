@@ -11,13 +11,23 @@ import { ViewModeProvider } from "@/features/view-mode/ui/view-mode-provider";
 import { MovieCard } from "../movie/movie-card/movie-card";
 import { useMoviesFiltersStore } from "@/features/movies/movies-filters/model/use-movies-filters-store";
 import { useMovieDetailsStore } from "@/features/movie/movie-details/model/use-movie-details-store";
-import { useMoviesStore } from "@/shared/store/use-movies-store";
+import { useMoviesStore } from "@/shared/libs/store/use-movies-store";
+import { LayoutHeader } from "../header/header";
+import { FC, useState } from "react";
+import { TMDBMovieTransformed } from "@/processes/api/types";
+import { MoviesPagination } from "@/features/movies/pagintaion/movies-pagination";
+
+// type MoviesProps = {
+//   moviesTMDB: TMDBMovieTransformed[];
+// };
 
 export const Movies = () => {
   const { setSelectedMovie } = useMovieDetailsStore();
   const { getFilteredMovies } = useMoviesFiltersStore();
   const { movies } = useMoviesStore();
   const filteredMovies = getFilteredMovies();
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleMovieClick = (movie: Movie) => {
     setSelectedMovie(movie.id);
@@ -27,12 +37,7 @@ export const Movies = () => {
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-        <div>
-          <h1 className="text-3xl font-bold mb-2">My Watchlist</h1>
-          <p className="text-muted-foreground">
-            {filteredMovies.length} {filteredMovies.length === 1 ? "movie" : "movies"}
-          </p>
-        </div>
+        <LayoutHeader moviesLength={filteredMovies.length} />
 
         <div className="flex items-center gap-2">
           <SidebarTrigger className="sm:hidden" />
@@ -50,6 +55,7 @@ export const Movies = () => {
         <MoviesNotFound isExist={!!movies.length} />
       )}
       <Toaster />
+      <MoviesPagination currentPage={currentPage} totalPages={20} onPageChange={setCurrentPage} />
     </>
   );
 };

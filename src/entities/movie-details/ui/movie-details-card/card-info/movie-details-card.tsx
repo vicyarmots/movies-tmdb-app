@@ -6,7 +6,11 @@ import type { Movie } from "@/shared/utils/movies-data/movies-data";
 import { Clock, Eye, EyeOff, Share, Star } from "lucide-react";
 import type { FC } from "react";
 
-export const MovieDetailsInfoCard: FC<{ movie: Movie }> = ({ movie }) => {
+type MovieDetailsInfoCardProps = {
+  movie: Movie;
+};
+
+export const MovieDetailsInfoCard: FC<MovieDetailsInfoCardProps> = ({ movie }) => {
   return (
     <Card>
       <CardHeader>

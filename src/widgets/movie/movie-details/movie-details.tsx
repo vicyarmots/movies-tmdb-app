@@ -11,12 +11,12 @@ import { getPriorityColor } from "@/shared/utils/get-priority-color/get-priority
 import { formatDate } from "@/shared/utils/date-formatter/date-formatter";
 import { ToggleFavorite } from "@/features/movie/movie-actions/ui/toggle-favorite/toggle-favorite";
 import { ToggleWatched } from "@/features/movie/movie-actions/ui/toggle-watched/toggle-watched";
-import { MovieDetailsNotFound } from "@/entities/movie/ui/movie-details/not-found/not-found";
 import { MoviePoster } from "@/entities/movie/ui/movie-card/poster/poster";
 import { MovieDetailsOverviewCard } from "@/entities/movie-details/ui/movie-details-card/overview-card/movie-details-overview";
 import { MovieDetailsInfoCard } from "@/entities/movie-details/ui/movie-details-card/card-info/movie-details-card";
 import { useMovieDetailsStore } from "@/features/movie/movie-details/model/use-movie-details-store";
-import { useMoviesStore } from "@/shared/store/use-movies-store";
+import { useMoviesStore } from "@/shared/libs/store/use-movies-store";
+import { MovieDetailsNotFound } from "@/entities/movie-details/ui/not-found/not-found";
 
 export function MovieDetails() {
   const { selectedMovieId, getMovieById } = useMovieDetailsStore();

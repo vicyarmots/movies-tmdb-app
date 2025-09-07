@@ -1,6 +1,6 @@
 "use client";
 
-import { useMoviesStore } from "@/shared/store/use-movies-store";
+import { useMoviesStore } from "@/shared/libs/store/use-movies-store";
 import { Badge } from "@/shared/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Database, Eye, Film, Heart } from "lucide-react";

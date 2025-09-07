@@ -1,13 +1,26 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Label } from "@/shared/ui/label";
 import { Switch } from "@/shared/ui/switch";
-import { Moon, Sun } from "lucide-react";
-import { useThemeStore } from "../../model/use-theme-store";
+import { ToggleThemeCardSkeleton } from "@/entities/settings/ui/skeleton/settings-skeleton";
 
 export const ThemeSwitchCard = () => {
-  const { isDarkTheme, toggleTheme } = useThemeStore();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return <ToggleThemeCardSkeleton />;
+  }
+
+  const isDarkTheme = theme === "dark";
+  const toggleTheme = () => setTheme(isDarkTheme ? "light" : "dark");
 
   return (
     <Card>

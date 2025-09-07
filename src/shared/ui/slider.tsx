@@ -15,12 +15,7 @@ function Slider({
 }: React.ComponentProps<typeof SliderPrimitive.Root>) {
   const id = React.useId();
   const _values = React.useMemo(
-    () =>
-      Array.isArray(value)
-        ? value
-        : Array.isArray(defaultValue)
-          ? defaultValue
-          : [min, max],
+    () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),
     [value, defaultValue, min, max],
   );
 

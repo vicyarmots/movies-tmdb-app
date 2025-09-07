@@ -3,7 +3,9 @@ import { Movie } from "@/shared/utils/movies-data/movies-data";
 import Image from "next/image";
 import { type FC, useState } from "react";
 
-export const MoviePoster: FC<Pick<Movie, "title" | "poster">> = ({ poster, title }) => {
+type MoviePosterProps = Pick<Movie, "title" | "poster">;
+
+export const MoviePoster: FC<MoviePosterProps> = ({ poster, title }) => {
   const [imageError, setImageError] = useState(false);
   return (
     <>

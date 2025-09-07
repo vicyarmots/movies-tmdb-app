@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Movie } from "@/shared/utils/movies-data/movies-data";
-import { initialMovies } from "../utils/initial-movie/initial-movie";
+import { initialMovies } from "../../utils/initial-movie/initial-movie";
 
 interface MoviesState {
   movies: Movie[];

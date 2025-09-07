@@ -1,6 +1,6 @@
 import { Button } from "@/shared/ui/button";
 import { useMoviesFiltersStore } from "../../model/use-movies-filters-store";
-import { useMoviesStore } from "@/shared/store/use-movies-store";
+import { useMoviesStore } from "@/shared/libs/store/use-movies-store";
 
 type Status = "all" | "unwatched" | "watched" | "favorites";
 

@@ -1,9 +1,9 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ROUTER_PATHS } from "@/shared/libs/router/router";
-import { Button } from "@/shared/ui/button";
 import { Film, Settings } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
 
 const sidebarNavigation = [
   {
@@ -19,24 +19,28 @@ const sidebarNavigation = [
 ];
 
 export const Navigation = () => {
-  const router = useRouter();
   const pathname = usePathname();
 
   return (
     <div className="space-y-2">
-      {sidebarNavigation.map(({ icon, title, path }) => (
-        <Button
-          key={title}
-          variant={pathname === path ? "default" : "ghost"}
-          onClick={() => router.push(path)}
-          className={`w-full justify-start ${
-            pathname === path ? "bg-orange-500 hover:bg-orange-600 text-white" : "hover:bg-muted/80"
-          }`}
-        >
-          {icon}
-          {title}
-        </Button>
-      ))}
+      {sidebarNavigation.map(({ icon, title, path }) => {
+        const isActive = pathname === path;
+        return (
+          <Link
+            key={path}
+            href={path}
+            prefetch
+            className={`flex w-full items-center px-3 py-2 rounded-md transition-colors ${
+              isActive
+                ? "bg-orange-500 hover:bg-orange-600 text-white"
+                : "hover:bg-muted/80 text-foreground"
+            }`}
+          >
+            {icon}
+            <span>{title}</span>
+          </Link>
+        );
+      })}
     </div>
   );
 };
