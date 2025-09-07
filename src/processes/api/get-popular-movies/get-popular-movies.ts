@@ -21,7 +21,6 @@ export async function getPopularMovies({
   );
 
   const movieGenresArray = await getMoviesGenres();
-
   const movieGenresMap: Record<number, string> = {};
   movieGenresArray.forEach((g) => {
     movieGenresMap[g.id] = g.name;
