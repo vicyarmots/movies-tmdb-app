@@ -15,7 +15,7 @@ export const useMoviesTabParams = () => {
   const handleTabClick = (tab: ActiveTabKey) => {
     const params = new URLSearchParams(Array.from(searchParams.entries()));
     params.set("tab", tab);
-    router.push(`/movies?${params.toString()}`);
+    router.push(`/discover?${params.toString()}`);
   };
 
   return { currentTab, currentTabTitle, handleTabClick };

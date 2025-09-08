@@ -1,9 +1,9 @@
 import { Input } from "@/shared/ui/input";
 import { Search } from "lucide-react";
-import { useMovieSearchStore } from "@/processes/api/services/search-movies-by-queries/search-movies-by-queries";
+import { useSearchMoviesQueryStore } from "../../model/hooks/use-search-movies-query";
 
 export const SearchMoviesQuery = () => {
-  const { searchQuery, setSearchQuery } = useMovieSearchStore();
+  const { searchQuery, setSearchQuery } = useSearchMoviesQueryStore();
 
   return (
     <div className="relative">

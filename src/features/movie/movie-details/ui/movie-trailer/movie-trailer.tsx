@@ -1,9 +1,8 @@
 "use client";
 
-import { Card } from "@/shared/ui/card";
 import { useMovieOfficialTrailer } from "../../model/hooks/use-movie-trailer";
-import { TrailerCard } from "@/entities/movie-details/ui/movie-details-card/trailer-card/trailer-card";
-import { BackgoundTrailer } from "@/entities/movie-details/ui/backgound-trailer/backgound-trailer";
+import { TrailerCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/trailer-card/trailer-card";
+import { BackgoundTrailer } from "@/entities/movie/ui/movie-details/ui/backgound-trailer/backgound-trailer";
 
 export const MovieTrailerFeature = ({
   movieId,
@@ -15,7 +14,7 @@ export const MovieTrailerFeature = ({
   const { trailer, isLoading, isError } = useMovieOfficialTrailer(movieId);
 
   if (isLoading) return;
-  if (isError || !trailer) return <Card>No official trailer available</Card>;
+  if (isError || !trailer) return;
 
   if (isBackgound) return <BackgoundTrailer trailer={trailer} />;
 

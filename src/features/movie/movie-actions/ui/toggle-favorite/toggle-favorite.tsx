@@ -1,17 +1,15 @@
+import { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
 import { Button } from "@/shared/ui/button";
-import type { Movie } from "@/shared/utils/movies-data/movies-data";
 import { Heart } from "lucide-react";
 import type { FC } from "react";
-import { useMovieActionsStore } from "../../model/use-movie-actions-store";
-import { TMDBMovieTransformed } from "@/processes/api/types";
 
 type ToggleFavoriteProps = {
   isIcon?: boolean;
   isFavorite: boolean;
-} & Pick<TMDBMovieTransformed, "id">;
+} & Pick<Movie, "id">;
 
 export const ToggleFavorite: FC<ToggleFavoriteProps> = ({ id, isFavorite, isIcon = false }) => {
-  const { toggleFavorite } = useMovieActionsStore();
+  // const { toggleFavorite } = useMovieActionsStore();
 
   return (
     <Button
@@ -19,7 +17,7 @@ export const ToggleFavorite: FC<ToggleFavoriteProps> = ({ id, isFavorite, isIcon
       variant={isFavorite ? "default" : "secondary"}
       onClick={(e) => {
         e.stopPropagation();
-        toggleFavorite(id);
+        // toggleFavorite(id);
       }}
       className={`${!isIcon ? "w-full" : ""} ${isFavorite ? "bg-red-500 hover:bg-red-600" : "bg-background/80 hover:bg-background/90"}`}
     >

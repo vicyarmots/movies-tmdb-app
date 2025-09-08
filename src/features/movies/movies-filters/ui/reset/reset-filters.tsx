@@ -1,8 +1,8 @@
 import { Button } from "@/shared/ui/button";
-import { useMoviesFiltersStore } from "../../model/use-movies-filters-store";
+import { useDiscoverFilterStore } from "../../model/use-discover-filter-store";
 
 export const ResetFilters = () => {
-  const { resetFilters } = useMoviesFiltersStore();
+  const { resetFilters } = useDiscoverFilterStore();
 
   return (
     <Button

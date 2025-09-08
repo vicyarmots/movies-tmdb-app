@@ -1,5 +1,5 @@
 export const ROUTER_PATHS = {
-  MOVIES: "/movies",
+  DISCOVER: "/discover",
   SETTINGS: "/settings",
-  MOVIE_BY_ID: "/movies/[id]",
+  USER_WATCHLIST: "/user/watchlist",
 } as const;

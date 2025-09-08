@@ -1,5 +1,5 @@
 import { StatisticsCard } from "@/entities/settings/ui/statistics-card/statistics-card";
-import { ThemeSwitchCard } from "@/features/settings/theme/ui/theme-switch-card/theme-switch-card";
+import { ThemeSwitch } from "@/features/settings/theme/model/theme-switch";
 import { Separator } from "@/shared/ui/separator";
 import { SidebarTrigger } from "@/shared/ui/sidebar";
 
@@ -13,7 +13,7 @@ export const Settings = () => {
           Customize your movie watchlist experience and view your statistics.
         </p>
       </div>
-      <ThemeSwitchCard />
+      <ThemeSwitch />
       <Separator />
       <StatisticsCard />
     </div>

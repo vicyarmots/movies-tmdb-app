@@ -1,19 +1,15 @@
+import { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
 import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/utils/cn/cn";
-import type { Movie } from "@/shared/utils/movies-data/movies-data";
 import { Eye, EyeOff } from "lucide-react";
 import type { FC } from "react";
-import { useMovieActionsStore } from "../../model/use-movie-actions-store";
-import { TMDBMovieTransformed } from "@/processes/api/types";
 
 type ToggleWatchedProps = {
   isIcon?: boolean;
   isWatched: boolean;
-} & Pick<TMDBMovieTransformed, "id">;
+} & Pick<Movie, "id">;
 
 export const ToggleWatched: FC<ToggleWatchedProps> = ({ id, isWatched, isIcon = false }) => {
-  const { toggleWatched } = useMovieActionsStore();
-
   const buttonClasses = cn(
     !isIcon && "w-full",
     isWatched ? "bg-green-500 hover:bg-green-600" : "bg-background/80 hover:bg-background/90",
@@ -25,7 +21,7 @@ export const ToggleWatched: FC<ToggleWatchedProps> = ({ id, isWatched, isIcon = 
       variant="default"
       onClick={(e) => {
         e.stopPropagation();
-        toggleWatched(id);
+        // toggleWatched(id);
       }}
       className={buttonClasses}
     >

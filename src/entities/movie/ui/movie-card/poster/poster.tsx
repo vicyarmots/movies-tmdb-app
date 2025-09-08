@@ -1,21 +1,21 @@
 "use client";
 
-import { TMDBMovieTransformed } from "@/processes/api/types";
+import { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
 import Image from "next/image";
 import { type FC, useState } from "react";
 
-type MoviePosterProps = Pick<TMDBMovieTransformed, "title" | "poster_path">;
+type Props = Pick<Movie, "title" | "posterPath">;
 
-export const MoviePoster: FC<MoviePosterProps> = ({ poster_path, title }) => {
+export const MoviePoster: FC<Props> = ({ title, posterPath }) => {
   const [imageError, setImageError] = useState(false);
   return (
     <>
       {!imageError ? (
         <Image
-          src={`${process.env.NEXT_PUBLIC_MOVIES_IMAGES}/${poster_path}`}
+          priority
+          fill
+          src={`${process.env.NEXT_PUBLIC_MOVIES_IMAGES}${posterPath ?? ""}`}
           alt={title}
-          width={100}
-          height={100}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           onError={() => setImageError(true)}
         />

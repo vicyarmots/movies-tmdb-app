@@ -22,27 +22,24 @@ export const MoviesPagination: React.FC<MoviesPaginationProps> = ({
   totalPages,
   onPageChange,
 }) => {
-  const getPages = () => {
-    const pages: (number | "ellipsis")[] = [];
+  const range = (start: number, end: number) =>
+    Array.from({ length: end - start + 1 }, (_, i) => start + i);
 
+  const getPages = (currentPage: number, totalPages: number) => {
     if (totalPages <= 7) {
-      for (let i = 1; i <= totalPages; i++) pages.push(i);
-    } else {
-      // always show first, last, and current +/- 1
-      pages.push(1);
-      if (currentPage > 3) pages.push("ellipsis");
-
-      for (
-        let i = Math.max(2, currentPage - 1);
-        i <= Math.min(totalPages - 1, currentPage + 1);
-        i++
-      ) {
-        pages.push(i);
-      }
-
-      if (currentPage < totalPages - 2) pages.push("ellipsis");
-      pages.push(totalPages);
+      return range(1, totalPages);
     }
+
+    const pages: (number | "ellipsis")[] = [1];
+
+    if (currentPage > 3) pages.push("ellipsis");
+
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+    pages.push(...range(start, end));
+
+    if (currentPage < totalPages - 2) pages.push("ellipsis");
+    pages.push(totalPages);
 
     return pages;
   };
@@ -54,7 +51,7 @@ export const MoviesPagination: React.FC<MoviesPaginationProps> = ({
           <PaginationPrevious onClick={() => currentPage !== 1 && onPageChange(currentPage - 1)} />
         </PaginationItem>
 
-        {getPages().map((page, index) =>
+        {getPages(currentPage, totalPages).map((page, index) =>
           page === "ellipsis" ? (
             <PaginationItem
               key={`ellipsis-${

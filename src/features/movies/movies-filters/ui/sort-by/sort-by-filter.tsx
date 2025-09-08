@@ -1,17 +1,9 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui/select";
-import { useMoviesFiltersStore } from "../../model/use-movies-filters-store";
-
-type SortBy = "dateAdded" | "title" | "releaseDate" | "priority";
-
-const sortOptions: { value: SortBy; label: string }[] = [
-  { value: "dateAdded", label: "Date Added" },
-  { value: "title", label: "Title" },
-  { value: "releaseDate", label: "Release Date" },
-  { value: "priority", label: "Priority" },
-] as const;
+import { useDiscoverFilterStore } from "../../model/use-discover-filter-store";
+import { type SortBy, sortOptions } from "../../utils/movies-filters.helpers";
 
 export const SortByFilter = () => {
-  const { filters, setFilters } = useMoviesFiltersStore();
+  const { filters, setFilters } = useDiscoverFilterStore();
 
   return (
     <div className="space-y-2">

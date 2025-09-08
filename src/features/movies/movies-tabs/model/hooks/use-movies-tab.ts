@@ -1,10 +1,10 @@
+import { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
 import { useMoviesTabParams } from "./use-movies-tab-params";
 import { useMoviesTabSWR } from "./use-movies-tab-swr";
 import { useEffect, useState } from "react";
-import type { TMDBMovieTransformed } from "@/processes/api/types";
 
 type UseMoviesTabsProps = {
-  initialMovies?: TMDBMovieTransformed[];
+  initialMovies?: Movie[];
   initialTab?: string;
   initialPage?: number;
   initialTotalPages?: number;
@@ -21,8 +21,6 @@ export const useMoviesTabs = ({
   const [currentPage, setCurrentPage] = useState(initialPage);
 
   const { currentTab: tabFromParams, currentTabTitle, handleTabClick } = useMoviesTabParams();
-
-  const currentTab = initialTab || tabFromParams;
 
   const { movies, isLoading, isError, totalPages, totalResults } = useMoviesTabSWR({
     tab: tabFromParams,
@@ -47,7 +45,7 @@ export const useMoviesTabs = ({
   }, [tabFromParams]);
 
   return {
-    currentTab,
+    currentTab: tabFromParams ?? initialTab,
     currentTabTitle,
     handleTabClick,
     movies,

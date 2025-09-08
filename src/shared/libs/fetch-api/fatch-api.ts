@@ -1,6 +1,6 @@
 const BASE_API_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
 
-type FetchOptions<TBody> = {
+export type FetchOptions<TBody> = {
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   headers?: HeadersInit;
   body?: TBody;

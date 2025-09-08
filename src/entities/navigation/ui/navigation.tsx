@@ -3,18 +3,23 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ROUTER_PATHS } from "@/shared/libs/router/router";
-import { Film, Settings } from "lucide-react";
+import { Film, Settings, User } from "lucide-react";
 
 const sidebarNavigation = [
   {
     icon: <Film className="w-4 h-4 mr-2" />,
-    title: "Movies",
-    path: ROUTER_PATHS.MOVIES,
+    title: "Discover",
+    path: ROUTER_PATHS.DISCOVER,
   },
   {
     icon: <Settings className="w-4 h-4 mr-2" />,
     title: "Settings",
     path: ROUTER_PATHS.SETTINGS,
+  },
+  {
+    icon: <User className="w-4 h-4 mr-2" />,
+    title: "My watchlist",
+    path: ROUTER_PATHS.USER_WATCHLIST,
   },
 ];
 

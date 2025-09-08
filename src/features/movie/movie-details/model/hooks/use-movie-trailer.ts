@@ -1,11 +1,11 @@
 import useSWR from "swr";
-import type { TMDBMovieVideo } from "@/processes/api/types";
-import { getMovieOfficialTrailer } from "@/processes/api/services/get-movie-trailer/get-movie-official-trailer";
+import { getMovieOfficialTrailerCustom } from "@/processes/api/services/tmdb/custom/routes/get-movie-trailer/get-movie-official-trailer";
+import type { MovieVideo } from "@/processes/api/services/tmdb/custom/custom.types";
 
 export const useMovieOfficialTrailer = (movieId: number) => {
-  const { data, error, isValidating } = useSWR<TMDBMovieVideo | null>(
+  const { data, error, isValidating } = useSWR<MovieVideo | null>(
     movieId ? `movie-trailer-${movieId}` : null,
-    () => getMovieOfficialTrailer(movieId),
+    () => getMovieOfficialTrailerCustom(movieId),
     {
       revalidateOnFocus: false,
       keepPreviousData: true,

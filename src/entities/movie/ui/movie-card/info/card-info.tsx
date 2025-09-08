@@ -1,20 +1,12 @@
-import { TMDBMovieTransformed } from "@/processes/api/types";
+import type { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
 import { formatDate } from "@/shared/utils/date-formatter/date-formatter";
 import { Calendar, Star } from "lucide-react";
 import type { FC } from "react";
 
-type MovieCardInfoProps = Pick<
-  TMDBMovieTransformed,
-  "title" | "genres" | "vote_average" | "release_date"
->;
+type Props = Pick<Movie, "title" | "genres" | "voteAverage" | "releaseDate">;
 
-export const MovieCardInfo: FC<MovieCardInfoProps> = ({
-  title,
-  genres,
-  vote_average,
-  release_date,
-}) => {
-  const roundedRating = vote_average && Math.round(vote_average * 10) / 10;
+export const MovieCardInfo: FC<Props> = ({ title, genres, voteAverage, releaseDate }) => {
+  const roundedRating = voteAverage && Math.round(voteAverage * 10) / 10;
 
   return (
     <div className="p-4">
@@ -29,7 +21,7 @@ export const MovieCardInfo: FC<MovieCardInfoProps> = ({
         </div>
         <div className="flex items-center gap-1">
           <Calendar className="w-3 h-3" />
-          <span>{formatDate(release_date)}</span>
+          <span>{formatDate(releaseDate)}</span>
         </div>
         {roundedRating ? (
           <div className="flex items-center gap-1">

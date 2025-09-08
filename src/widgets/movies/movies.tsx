@@ -1,73 +1,81 @@
 "use client";
-
-import { Toaster } from "@ui/sonner";
 import { MoviesNotFound } from "@/entities/movies/ui/not-found/not-found";
-import { redirect } from "next/navigation";
-import { ViewModeProvider } from "@/features/view-mode/ui/view-mode-provider";
-import { MovieCard } from "../movie/movie-card/movie-card";
-import { LayoutHeader } from "../main-layout/header/header";
-import type { TMDBMovieTransformed } from "@/processes/api/types";
-import { MoviesPagination } from "@/features/movies/pagintaion/movies-pagination";
-// import { useMovieSearchStore } from "@/processes/api/search-movies-by-queries/search-movies-by-queries";
-import { useMoviesTabs } from "@/features/movies/movies-tabs/model/hooks/use-movies-tab";
 import { MovieGridSkeleton } from "@/entities/movies/ui/skeleton/movies-skeleton";
 import { useViewModeStore } from "@/features/view-mode/model/view-mode-store";
-import { MAXIMUM_TOTAL_PAGES } from "@/processes/api/constants";
+import { ViewModeProvider } from "@/features/view-mode/ui/view-mode-provider";
+import { redirect } from "next/navigation";
+import { MovieCardWidget } from "../movie/movie-card/movie-card";
+import { MoviesPagination } from "@/features/movies/pagintaion/movies-pagination";
+import type { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
+import { MAXIMUM_TOTAL_PAGES } from "@/features/movies/pagintaion/constants";
+import { MoviesHeaderWidget } from "./header/header";
+import type { ActiveTabKey } from "@/features/movies/movies-tabs/model/types/types";
 
 interface MoviesProps {
-  initialMovies: TMDBMovieTransformed[];
-  initialTab: "popular" | "topRated" | "upcoming";
-  initialPage: number;
+  movies: Movie[];
+  isLoading: boolean;
+  isError: boolean;
+  totalPages?: number;
+  totalResults: number;
+  currentPage?: number;
+  activeTab?: ActiveTabKey | null;
+  onPageChange?: (page: number) => void;
 }
 
-export const Movies = ({ initialMovies, initialTab, initialPage }: MoviesProps) => {
-  const {
-    movies,
-    isLoading,
-    isError,
-    currentTabTitle,
-    totalPages,
-    totalResults,
-    currentPage,
-    setCurrentPage,
-  } = useMoviesTabs({
-    initialMovies,
-    initialTab,
-    initialPage,
-  });
+type MovieStatus = "loading" | "error" | "empty" | "success";
 
+export function getMoviesStatusRequest(
+  isLoading: boolean,
+  isError: boolean,
+  movies: Movie[],
+): MovieStatus {
+  if (isLoading) return "loading";
+  if (isError) return "error";
+  if (!movies.length) return "empty";
+  return "success";
+}
+
+export function Movies({
+  movies,
+  isLoading,
+  isError,
+  totalPages,
+  totalResults,
+  currentPage,
+  activeTab,
+  onPageChange,
+}: MoviesProps) {
   const { viewMode } = useViewModeStore();
-  const handleMovieClick = (movie: TMDBMovieTransformed) => {
-    redirect(`/movies/${movie.id}`);
+  const handleMovieClick = (movie: Movie) => {
+    redirect(`/discover/${movie.id}`);
+  };
+
+  const statusRequest = getMoviesStatusRequest(isLoading, isError, movies);
+
+  const renderMovies = {
+    loading: <MovieGridSkeleton viewMode={viewMode} />,
+    error: <MoviesNotFound isExist={false} />,
+    empty: <MoviesNotFound isExist={false} />,
+    success: (
+      <ViewModeProvider>
+        {movies.map((movie) => (
+          <MovieCardWidget key={movie.id} movie={movie} onClick={handleMovieClick} />
+        ))}
+      </ViewModeProvider>
+    ),
   };
 
   return (
     <>
-      <LayoutHeader activeTab={currentTabTitle} moviesLength={totalResults ?? null} />
-
-      <div className="py-5">
-        {isLoading ? (
-          <MovieGridSkeleton viewMode={viewMode} />
-        ) : isError ? (
-          <MoviesNotFound isExist={false} />
-        ) : movies.length > 0 ? (
-          <ViewModeProvider>
-            {movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} onClick={handleMovieClick} />
-            ))}
-          </ViewModeProvider>
-        ) : (
-          <MoviesNotFound isExist={false} />
-        )}
-      </div>
-
-      <Toaster />
-
-      <MoviesPagination
-        currentPage={currentPage}
-        totalPages={Math.min(totalPages, MAXIMUM_TOTAL_PAGES)}
-        onPageChange={setCurrentPage}
-      />
+      <MoviesHeaderWidget moviesLength={totalResults} activeTab={activeTab ?? null} />
+      <div className="py-5">{renderMovies[statusRequest]}</div>
+      {totalPages && currentPage && onPageChange && (
+        <MoviesPagination
+          currentPage={currentPage}
+          totalPages={Math.min(totalPages, MAXIMUM_TOTAL_PAGES)}
+          onPageChange={onPageChange}
+        />
+      )}
     </>
   );
-};
+}

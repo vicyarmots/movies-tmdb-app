@@ -9,14 +9,18 @@ import { redirect } from "next/navigation";
 import { ToggleFavorite } from "@/features/movie/movie-actions/ui/toggle-favorite/toggle-favorite";
 import { ToggleWatched } from "@/features/movie/movie-actions/ui/toggle-watched/toggle-watched";
 import { MoviePoster } from "@/entities/movie/ui/movie-card/poster/poster";
-import { MovieDetailsOverviewCard } from "@/entities/movie-details/ui/movie-details-card/overview-card/movie-details-overview";
-import { MovieDetailsInfoCard } from "@/entities/movie-details/ui/movie-details-card/card-info/movie-details-card";
+import { MovieDetailsOverviewCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/overview-card/movie-details-overview";
+import { MovieDetailsInfoCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/card-info/movie-details-card";
 import { FC } from "react";
-import type { TMDBMovieDetail } from "@/processes/api/types";
 import { MovieTrailerFeature } from "@/features/movie/movie-details/ui/movie-trailer/movie-trailer";
+import { MovieDetails } from "@/processes/api/services/tmdb/custom/custom.types";
 
-export const MovieDetails: FC<{ movie: TMDBMovieDetail }> = ({ movie }) => {
-  const onBack = () => redirect(ROUTER_PATHS.MOVIES);
+interface Props {
+  movie: MovieDetails;
+}
+
+export const MovieDetailsWidget: FC<Props> = ({ movie }) => {
+  const onBack = () => redirect(ROUTER_PATHS.DISCOVER);
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -31,7 +35,7 @@ export const MovieDetails: FC<{ movie: TMDBMovieDetail }> = ({ movie }) => {
         <div className="lg:col-span-1">
           <Card className="overflow-hidden">
             <div className="relative aspect-[2/3]">
-              <MoviePoster title={movie.title} poster_path={movie.poster_path} />
+              <MoviePoster title={movie.title} posterPath={movie.posterPath} />
             </div>
             <CardContent className="p-4 space-y-2">
               <ToggleWatched id={movie.id} isWatched={true} />
@@ -61,6 +65,7 @@ export const MovieDetails: FC<{ movie: TMDBMovieDetail }> = ({ movie }) => {
             </div> */}
 
             <h1 className="text-4xl font-bold mb-2">{movie.title}</h1>
+            <h4 className="text-lg text-foreground/50">{movie.tagline}</h4>
 
             {/* <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-4">
               <div className="flex items-center gap-2">
