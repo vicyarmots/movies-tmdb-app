@@ -1,6 +1,6 @@
 import { getMovieVideosOrigin } from "../../../origin/routes/get-movie-videos/get-movie-videos";
 
-export async function getMovieOfficialTrailerCustom(movieId: number) {
+export async function getMovieOfficialTrailerDomain(movieId: number) {
   const data = await getMovieVideosOrigin({ id: movieId });
 
   return data.results

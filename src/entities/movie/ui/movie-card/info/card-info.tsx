@@ -1,4 +1,4 @@
-import type { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
+import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 import { formatDate } from "@/shared/utils/date-formatter/date-formatter";
 import { Calendar, Star } from "lucide-react";
 import type { FC } from "react";

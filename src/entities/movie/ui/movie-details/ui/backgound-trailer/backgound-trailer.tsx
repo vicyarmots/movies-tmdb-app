@@ -1,4 +1,4 @@
-import { MovieVideo } from "@/processes/api/services/tmdb/custom/custom.types";
+import { MovieVideo } from "@/processes/api/services/tmdb/domain/custom.types";
 import type { FC } from "react";
 
 type BackgoundTrailerProps = {

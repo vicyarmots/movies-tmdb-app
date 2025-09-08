@@ -1,4 +1,4 @@
-import { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
+import { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 import { useMoviesTabParams } from "./use-movies-tab-params";
 import { useMoviesTabSWR } from "./use-movies-tab-swr";
 import { useEffect, useState } from "react";

@@ -25,19 +25,24 @@ export async function fetchApi<TResponse = unknown, TBody = unknown>(
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_ACCESS}`,
         };
 
-  const response = await fetch(`${BASE_API_URL}${endpoint}`, {
-    cache,
-    method,
-    headers,
-    credentials,
-    signal,
-    body: isFormData ? (body as FormData) : body ? JSON.stringify(body) : undefined,
-  });
+  try {
+    const response = await fetch(`${BASE_API_URL}${endpoint}`, {
+      cache,
+      method,
+      headers,
+      credentials,
+      signal,
+      body: isFormData ? (body as FormData) : body ? JSON.stringify(body) : undefined,
+    });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(errorText || "Request failed");
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText || "Request failed");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("fetchApi error:", error);
+    throw error;
   }
-
-  return await response.json();
 }

@@ -4,7 +4,7 @@ import { Card } from "@ui/card";
 import { MoviePoster } from "@/entities/movie/ui/movie-card/poster/poster";
 import { CardOverlay } from "@/entities/movie/ui/movie-card/overlay/card-overlay";
 import { MovieCardInfo } from "@/entities/movie/ui/movie-card/info/card-info";
-import type { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
+import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 
 interface MovieCardProps {
   movie: Movie;

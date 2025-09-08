@@ -2,7 +2,7 @@
 
 import { MoviesSearchWidget } from "../movies-search/movies-search";
 import { MoviesTabsWidget } from "../movies-tabs/movies-tabs";
-import type { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
+import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 import {
   hasActiveFilters,
   useDiscoverFilterStore,

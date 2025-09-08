@@ -1,4 +1,4 @@
-import { getMoviesGenresCustom } from "../get-movies-genres/get-movies-genres";
+import { getMoviesGenresDomain } from "../get-movies-genres/get-movies-genres";
 import { transformMovies } from "../../transformers/tranform-movies";
 import { getUpcomingMoviesOrigin } from "../../../origin/routes/get-upcoming-movies/get-upcoming-movies";
 import type { MoviesResponse } from "../../custom.types";
@@ -7,9 +7,9 @@ interface Props {
   page: number;
 }
 
-export async function getUpcomingMoviesCustom({ page }: Props): Promise<MoviesResponse> {
+export async function getUpcomingMoviesDomain({ page }: Props): Promise<MoviesResponse> {
   const data = await getUpcomingMoviesOrigin({ page, options: { cache: "no-store" } });
-  const movieGenresArray = await getMoviesGenresCustom();
+  const movieGenresArray = await getMoviesGenresDomain();
 
   const movieGenresMap = Object.fromEntries(movieGenresArray.map((g) => [g.id, g.name]));
 

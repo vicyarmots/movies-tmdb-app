@@ -1,11 +1,11 @@
 import { Card, CardContent } from "@ui/card";
 import { Skeleton } from "@ui/skeleton";
 
-interface MovieCardSkeletonProps {
+interface Props {
   viewMode: "grid" | "list";
 }
 
-export function MovieCardSkeleton({ viewMode }: MovieCardSkeletonProps) {
+export function MovieCardSkeleton({ viewMode }: Props) {
   if (viewMode === "list") {
     return (
       <Card className="group relative overflow-hidden bg-card border-border/40 animate-pulse">

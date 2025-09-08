@@ -1,4 +1,4 @@
-import { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
+import { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 import { Button } from "@/shared/ui/button";
 import { Heart } from "lucide-react";
 import type { FC } from "react";

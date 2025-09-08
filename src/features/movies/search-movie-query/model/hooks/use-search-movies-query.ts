@@ -1,4 +1,4 @@
-import { searchMovieByQueriesCustom } from "@/processes/api/services/tmdb/custom/routes/search-movies-by-queries/search-movies-by-queries";
+import { searchMovieByQueriesDomain } from "@/processes/api/services/tmdb/domain/routes/search-movies-by-queries/search-movies-by-queries";
 import { useDebounce } from "@/shared/libs/hooks/use-debaunce";
 import { useRef } from "react";
 import useSWR from "swr";
@@ -16,7 +16,7 @@ export const useSearchMovies = (query: string) => {
       controllerRef.current = controller;
 
       try {
-        const response = await searchMovieByQueriesCustom({
+        const response = await searchMovieByQueriesDomain({
           query: debouncedQuery,
           signal: controller.signal,
         });

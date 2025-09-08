@@ -1,7 +1,7 @@
-import type { MoviesResponse } from "@/processes/api/services/tmdb/custom/custom.types";
-import { getPopularMoviesCustom } from "@/processes/api/services/tmdb/custom/routes/get-popular-movies/get-popular-movies";
-import { getTopRatedMoviesCustom } from "@/processes/api/services/tmdb/custom/routes/get-top-rated-movies/get-top-rated-movies";
-import { getUpcomingMoviesCustom } from "@/processes/api/services/tmdb/custom/routes/get-upcoming-movies/get-upcoming-movies";
+import type { MoviesResponse } from "@/processes/api/services/tmdb/domain/custom.types";
+import { getPopularMoviesDomain } from "@/processes/api/services/tmdb/domain/routes/get-popular-movies/get-popular-movies";
+import { getTopRatedMoviesDomain } from "@/processes/api/services/tmdb/domain/routes/get-top-rated-movies/get-top-rated-movies";
+import { getUpcomingMoviesDomain } from "@/processes/api/services/tmdb/domain/routes/get-upcoming-movies/get-upcoming-movies";
 import useSWR from "swr";
 
 export type MoviesTab = "popular" | "topRated" | "upcoming";
@@ -12,9 +12,9 @@ type RequestSWRProps = {
 } & { fallbackData?: MoviesResponse };
 
 const fetchers: Record<MoviesTab, ({ page }: { page: number }) => Promise<MoviesResponse>> = {
-  popular: getPopularMoviesCustom,
-  topRated: getTopRatedMoviesCustom,
-  upcoming: getUpcomingMoviesCustom,
+  popular: getPopularMoviesDomain,
+  topRated: getTopRatedMoviesDomain,
+  upcoming: getUpcomingMoviesDomain,
 };
 
 export const useMoviesTabSWR = ({ tab, page, fallbackData }: RequestSWRProps) => {

@@ -5,7 +5,7 @@ interface Props {
   id: number;
 }
 
-export async function getMoviePosterCustom({ id }: Props) {
+export async function getMoviePosterDomain({ id }: Props) {
   const data = await getMovieMediaImagesOrigin({ id });
   const transformed = transformMediaImages(data);
   return transformed.posters[0];

@@ -2,7 +2,7 @@ import { FetchOptions } from "@/shared/libs/fetch-api/fatch-api";
 import { transformMovies } from "../../transformers/tranform-movies";
 import { discoverMovieOrigin } from "../../../origin/routes/discover-movies/discover-movies";
 import type { MoviesResponse } from "../../custom.types";
-import { getMoviesGenresCustom } from "../get-movies-genres/get-movies-genres";
+import { getMoviesGenresDomain } from "../get-movies-genres/get-movies-genres";
 
 interface Props {
   options: FetchOptions<unknown>;
@@ -16,7 +16,7 @@ interface Props {
   };
 }
 
-export async function discoverMoviesCustom({ queries, options }: Props): Promise<MoviesResponse> {
+export async function discoverMoviesDomain({ queries, options }: Props): Promise<MoviesResponse> {
   const maxReleaseDate = new Date().toISOString().split("T")[0];
 
   const defaultQueries = {
@@ -31,7 +31,7 @@ export async function discoverMoviesCustom({ queries, options }: Props): Promise
     queries: defaultQueries,
   });
 
-  const movieGenresArray = await getMoviesGenresCustom();
+  const movieGenresArray = await getMoviesGenresDomain();
   const movieGenresMap = Object.fromEntries(movieGenresArray.map((g) => [g.id, g.name]));
 
   return {

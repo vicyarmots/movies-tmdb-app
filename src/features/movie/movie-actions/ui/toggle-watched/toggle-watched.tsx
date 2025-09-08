@@ -1,4 +1,4 @@
-import { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
+import { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/utils/cn/cn";
 import { Eye, EyeOff } from "lucide-react";
@@ -9,7 +9,7 @@ type ToggleWatchedProps = {
   isWatched: boolean;
 } & Pick<Movie, "id">;
 
-export const ToggleWatched: FC<ToggleWatchedProps> = ({ id, isWatched, isIcon = false }) => {
+export const ToggleWatched: FC<ToggleWatchedProps> = ({ isWatched, isIcon = false }) => {
   const buttonClasses = cn(
     !isIcon && "w-full",
     isWatched ? "bg-green-500 hover:bg-green-600" : "bg-background/80 hover:bg-background/90",
@@ -25,7 +25,7 @@ export const ToggleWatched: FC<ToggleWatchedProps> = ({ id, isWatched, isIcon = 
       }}
       className={buttonClasses}
     >
-      {isIcon ? (
+      {/* {isIcon ? (
         isWatched ? (
           <Eye className="w-4 h-4" />
         ) : (
@@ -35,7 +35,9 @@ export const ToggleWatched: FC<ToggleWatchedProps> = ({ id, isWatched, isIcon = 
         "Mark as Unwatched"
       ) : (
         "Mark as Watched"
-      )}
+      )} */}
+      <Eye className="w-4 h-4" />
+      Mark as Unwatched
     </Button>
   );
 };

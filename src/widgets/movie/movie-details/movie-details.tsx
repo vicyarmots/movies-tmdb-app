@@ -3,23 +3,23 @@
 import { Button } from "@ui/button";
 import { Card, CardContent } from "@ui/card";
 import { Separator } from "@ui/separator";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, TvIcon, WatchIcon } from "lucide-react";
 import { ROUTER_PATHS } from "@/shared/libs/router/router";
 import { redirect } from "next/navigation";
-import { ToggleFavorite } from "@/features/movie/movie-actions/ui/toggle-favorite/toggle-favorite";
-import { ToggleWatched } from "@/features/movie/movie-actions/ui/toggle-watched/toggle-watched";
 import { MoviePoster } from "@/entities/movie/ui/movie-card/poster/poster";
 import { MovieDetailsOverviewCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/overview-card/movie-details-overview";
 import { MovieDetailsInfoCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/card-info/movie-details-card";
 import { FC } from "react";
 import { MovieTrailerFeature } from "@/features/movie/movie-details/ui/movie-trailer/movie-trailer";
-import { MovieDetails } from "@/processes/api/services/tmdb/custom/custom.types";
+import { MovieDetails } from "@/processes/api/services/tmdb/domain/custom.types";
+import { useWatchlistStore } from "@/features/user/watchlist/model/watchlist-store";
 
 interface Props {
   movie: MovieDetails;
 }
 
 export const MovieDetailsWidget: FC<Props> = ({ movie }) => {
+  const { addId, removeId, isInWatchlist } = useWatchlistStore();
   const onBack = () => redirect(ROUTER_PATHS.DISCOVER);
 
   return (
@@ -38,8 +38,28 @@ export const MovieDetailsWidget: FC<Props> = ({ movie }) => {
               <MoviePoster title={movie.title} posterPath={movie.posterPath} />
             </div>
             <CardContent className="p-4 space-y-2">
-              <ToggleWatched id={movie.id} isWatched={true} />
-              <ToggleFavorite id={movie.id} isFavorite={true} />
+              {!isInWatchlist(movie.id) ? (
+                <Button
+                  className="w-full flex items-center justify-center gap-2"
+                  onClick={() => addId(movie.id)}
+                >
+                  <TvIcon className="w-5 h-5" />
+                  Add to Watchlist
+                </Button>
+              ) : (
+                <Button
+                  className="w-full flex items-center justify-center gap-2 border-1 border-orange-500 bg-background"
+                  variant="secondary"
+                  onClick={() => removeId(movie.id)}
+                >
+                  <TvIcon className="w-5 h-5" />
+                  Remove from watchlist
+                </Button>
+              )}
+
+              {/* IMPLEMENT IN THE FUTURE */}
+              {/* <ToggleWatched id={movie.id} isWatched={true} />
+              <ToggleFavorite id={movie.id} isFavorite={true} /> */}
             </CardContent>
           </Card>
         </div>
@@ -66,25 +86,6 @@ export const MovieDetailsWidget: FC<Props> = ({ movie }) => {
 
             <h1 className="text-4xl font-bold mb-2">{movie.title}</h1>
             <h4 className="text-lg text-foreground/50">{movie.tagline}</h4>
-
-            {/* <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-4">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span>{formatDate(movie.release_date)}</span>
-              </div>
-
-              {movie.vote_average && (
-                <div className="flex items-center gap-2">
-                  <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                  <span>{movie.vote_average}/10</span>
-                </div>
-              )}
-
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-orange-500" />
-                {movie.genres?.map((g) => g.name).join(", ") || "No genres"}
-              </div>
-            </div> */}
           </div>
 
           <Separator />

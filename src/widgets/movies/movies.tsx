@@ -6,7 +6,7 @@ import { ViewModeProvider } from "@/features/view-mode/ui/view-mode-provider";
 import { redirect } from "next/navigation";
 import { MovieCardWidget } from "../movie/movie-card/movie-card";
 import { MoviesPagination } from "@/features/movies/pagintaion/movies-pagination";
-import type { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
+import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 import { MAXIMUM_TOTAL_PAGES } from "@/features/movies/pagintaion/constants";
 import { MoviesHeaderWidget } from "./header/header";
 import type { ActiveTabKey } from "@/features/movies/movies-tabs/model/types/types";
@@ -19,6 +19,7 @@ interface MoviesProps {
   totalResults: number;
   currentPage?: number;
   activeTab?: ActiveTabKey | null;
+  withHeader?: boolean;
   onPageChange?: (page: number) => void;
 }
 
@@ -43,6 +44,7 @@ export function Movies({
   totalResults,
   currentPage,
   activeTab,
+  withHeader = true,
   onPageChange,
 }: MoviesProps) {
   const { viewMode } = useViewModeStore();
@@ -67,7 +69,9 @@ export function Movies({
 
   return (
     <>
-      <MoviesHeaderWidget moviesLength={totalResults} activeTab={activeTab ?? null} />
+      {withHeader && (
+        <MoviesHeaderWidget moviesLength={totalResults} activeTab={activeTab ?? null} />
+      )}
       <div className="py-5">{renderMovies[statusRequest]}</div>
       {totalPages && currentPage && onPageChange && (
         <MoviesPagination

@@ -12,14 +12,14 @@ const sidebarNavigation = [
     path: ROUTER_PATHS.DISCOVER,
   },
   {
-    icon: <Settings className="w-4 h-4 mr-2" />,
-    title: "Settings",
-    path: ROUTER_PATHS.SETTINGS,
-  },
-  {
     icon: <User className="w-4 h-4 mr-2" />,
     title: "My watchlist",
     path: ROUTER_PATHS.USER_WATCHLIST,
+  },
+  {
+    icon: <Settings className="w-4 h-4 mr-2" />,
+    title: "Settings",
+    path: ROUTER_PATHS.SETTINGS,
   },
 ];
 
@@ -41,7 +41,7 @@ export const Navigation = () => {
                 : "hover:bg-muted/80 text-foreground"
             }`}
           >
-            {icon}
+            <span>{icon}</span>
             <span>{title}</span>
           </Link>
         );

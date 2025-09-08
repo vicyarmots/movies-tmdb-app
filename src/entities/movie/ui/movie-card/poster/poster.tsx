@@ -1,6 +1,7 @@
 "use client";
 
-import { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
+import { imageSizes } from "@/entities/movie/utils/image-sizes";
+import { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 import Image from "next/image";
 import { type FC, useState } from "react";
 
@@ -17,6 +18,7 @@ export const MoviePoster: FC<Props> = ({ title, posterPath }) => {
           src={`${process.env.NEXT_PUBLIC_MOVIES_IMAGES}${posterPath ?? ""}`}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes={imageSizes}
           onError={() => setImageError(true)}
         />
       ) : (

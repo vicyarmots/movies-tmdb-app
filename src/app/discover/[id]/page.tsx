@@ -1,4 +1,4 @@
-import { getMovieDetailsCustom } from "@/processes/api/services/tmdb/custom/routes/get-movie-details/get-movie-details";
+import { getMovieDetailsDomain } from "@/processes/api/services/tmdb/domain/routes/get-movie-details/get-movie-details";
 import { MovieDetailsWidget } from "@/widgets/movie/movie-details/movie-details";
 
 interface MovieDetailsPageProps {
@@ -6,7 +6,7 @@ interface MovieDetailsPageProps {
 }
 
 const MovieDetailsPage = async ({ params }: MovieDetailsPageProps) => {
-  const movie = await getMovieDetailsCustom(params.id);
+  const movie = await getMovieDetailsDomain(params.id);
   return <MovieDetailsWidget movie={movie} />;
 };
 
