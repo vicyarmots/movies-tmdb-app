@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import type { MovieFilters, Movie } from "@/shared/utils/movies-data/movies-data";
 import { useMoviesStore } from "@/shared/libs/store/use-movies-store";
-import { getFilteredMoviesHelper } from "../utils/movies-filters.helpers";
+// import { getFilteredMoviesHelper } from "../utils/movies-filters.helpers";
 
 interface FiltersState {
   filters: MovieFilters;
@@ -16,7 +16,7 @@ const defaultFilters: MovieFilters = {
   status: "all",
   genre: "all",
   priority: "all",
-  sortBy: "dateAdded",
+  sortBy: "release_date",
 };
 
 export const useMoviesFiltersStore = create<FiltersState>((set, get) => ({
@@ -32,6 +32,7 @@ export const useMoviesFiltersStore = create<FiltersState>((set, get) => ({
   getFilteredMovies: () => {
     const { movies } = useMoviesStore();
     const { filters, searchQuery } = get();
-    return getFilteredMoviesHelper(movies, filters, searchQuery) as Movie[];
+    // return getFilteredMoviesHelper(movies, filters, searchQuery) as Movie[];
+    return [];
   },
 }));

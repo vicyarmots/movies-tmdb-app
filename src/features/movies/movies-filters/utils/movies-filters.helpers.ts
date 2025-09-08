@@ -1,3 +1,5 @@
+import { TMDBMovieTransformed } from "@/processes/api/types";
+
 type Status = "all" | "watched" | "unwatched" | "favorites";
 type Priority = "Low" | "Medium" | "High";
 
@@ -48,13 +50,13 @@ const filterByGenreAndPriority = (
     .filter((m) => (priority !== "all" ? m.priority === priority : true));
 };
 
-const filterBySearchQuery = (movies: Movie[], query: string): Movie[] => {
-  if (!query) return movies;
-  const q = query.toLowerCase();
-  return movies.filter(
-    (m) => m.title.toLowerCase().includes(q) || m.genre.toLowerCase().includes(q),
-  );
-};
+// const filterBySearchQuery = (movies: TMDBMovieTransformed[], query: string): Movie[] => {
+//   if (!query) return movies;
+//   const q = query.toLowerCase();
+//   return movies.filter(
+//     (m) => m.title.toLowerCase().includes(q) || m.genre.toLowerCase().includes(q),
+//   );
+// };
 
 const sortMovies = (movies: Movie[], sortBy: Filters["sortBy"]): Movie[] => {
   return [...movies].sort((a, b) => {
@@ -71,13 +73,13 @@ const sortMovies = (movies: Movie[], sortBy: Filters["sortBy"]): Movie[] => {
   });
 };
 
-export const getFilteredMoviesHelper = (
-  movies: Movie[],
-  filters: Filters,
-  searchQuery: string,
-): Movie[] => {
-  let result = filterBySearchQuery(movies, searchQuery);
-  result = filterByStatus(result, filters.status);
-  result = filterByGenreAndPriority(result, filters.genre, filters.priority);
-  return sortMovies(result, filters.sortBy);
-};
+// export const getFilteredMoviesHelper = (
+//   movies: TMDBMovieTransformed[],
+//   filters: Filters,
+//   searchQuery: string,
+// ): Movie[] => {
+//   let result = filterBySearchQuery(movies, searchQuery);
+//   result = filterByStatus(result, filters.status);
+//   result = filterByGenreAndPriority(result, filters.genre, filters.priority);
+//   return sortMovies(result, filters.sortBy);
+// };

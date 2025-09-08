@@ -1,61 +1,73 @@
 "use client";
 
-import { SidebarTrigger } from "@ui/sidebar";
 import { Toaster } from "@ui/sonner";
 import { MoviesNotFound } from "@/entities/movies/ui/not-found/not-found";
-import type { Movie } from "@/shared/utils/movies-data/movies-data";
 import { redirect } from "next/navigation";
-import { ROUTER_PATHS } from "@/shared/libs/router/router";
-import { ViewModeToggle } from "@/features/view-mode/ui/view-mode-toggle";
 import { ViewModeProvider } from "@/features/view-mode/ui/view-mode-provider";
 import { MovieCard } from "../movie/movie-card/movie-card";
-import { useMoviesFiltersStore } from "@/features/movies/movies-filters/model/use-movies-filters-store";
-import { useMovieDetailsStore } from "@/features/movie/movie-details/model/use-movie-details-store";
-import { useMoviesStore } from "@/shared/libs/store/use-movies-store";
-import { LayoutHeader } from "../header/header";
-import { FC, useState } from "react";
-import { TMDBMovieTransformed } from "@/processes/api/types";
+import { LayoutHeader } from "../main-layout/header/header";
+import type { TMDBMovieTransformed } from "@/processes/api/types";
 import { MoviesPagination } from "@/features/movies/pagintaion/movies-pagination";
+// import { useMovieSearchStore } from "@/processes/api/search-movies-by-queries/search-movies-by-queries";
+import { useMoviesTabs } from "@/features/movies/movies-tabs/model/hooks/use-movies-tab";
+import { MovieGridSkeleton } from "@/entities/movies/ui/skeleton/movies-skeleton";
+import { useViewModeStore } from "@/features/view-mode/model/view-mode-store";
+import { MAXIMUM_TOTAL_PAGES } from "@/processes/api/constants";
 
-// type MoviesProps = {
-//   moviesTMDB: TMDBMovieTransformed[];
-// };
+interface MoviesProps {
+  initialMovies: TMDBMovieTransformed[];
+  initialTab: "popular" | "topRated" | "upcoming";
+  initialPage: number;
+}
 
-export const Movies = () => {
-  const { setSelectedMovie } = useMovieDetailsStore();
-  const { getFilteredMovies } = useMoviesFiltersStore();
-  const { movies } = useMoviesStore();
-  const filteredMovies = getFilteredMovies();
+export const Movies = ({ initialMovies, initialTab, initialPage }: MoviesProps) => {
+  const {
+    movies,
+    isLoading,
+    isError,
+    currentTabTitle,
+    totalPages,
+    totalResults,
+    currentPage,
+    setCurrentPage,
+  } = useMoviesTabs({
+    initialMovies,
+    initialTab,
+    initialPage,
+  });
 
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handleMovieClick = (movie: Movie) => {
-    setSelectedMovie(movie.id);
-    redirect(ROUTER_PATHS.MOVIE_BY_ID);
+  const { viewMode } = useViewModeStore();
+  const handleMovieClick = (movie: TMDBMovieTransformed) => {
+    redirect(`/movies/${movie.id}`);
   };
 
   return (
     <>
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-        <LayoutHeader moviesLength={filteredMovies.length} />
+      <LayoutHeader activeTab={currentTabTitle} moviesLength={totalResults ?? null} />
 
-        <div className="flex items-center gap-2">
-          <SidebarTrigger className="sm:hidden" />
-          <ViewModeToggle />
-        </div>
+      <div className="py-5">
+        {isLoading ? (
+          <MovieGridSkeleton viewMode={viewMode} />
+        ) : isError ? (
+          <MoviesNotFound isExist={false} />
+        ) : movies.length > 0 ? (
+          <ViewModeProvider>
+            {movies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} onClick={handleMovieClick} />
+            ))}
+          </ViewModeProvider>
+        ) : (
+          <MoviesNotFound isExist={false} />
+        )}
       </div>
 
-      {filteredMovies.length > 0 ? (
-        <ViewModeProvider>
-          {filteredMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} onClick={handleMovieClick} />
-          ))}
-        </ViewModeProvider>
-      ) : (
-        <MoviesNotFound isExist={!!movies.length} />
-      )}
       <Toaster />
-      <MoviesPagination currentPage={currentPage} totalPages={20} onPageChange={setCurrentPage} />
+
+      <MoviesPagination
+        currentPage={currentPage}
+        totalPages={Math.min(totalPages, MAXIMUM_TOTAL_PAGES)}
+        onPageChange={setCurrentPage}
+      />
     </>
   );
 };

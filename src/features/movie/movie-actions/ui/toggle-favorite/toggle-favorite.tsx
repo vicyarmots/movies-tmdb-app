@@ -3,10 +3,12 @@ import type { Movie } from "@/shared/utils/movies-data/movies-data";
 import { Heart } from "lucide-react";
 import type { FC } from "react";
 import { useMovieActionsStore } from "../../model/use-movie-actions-store";
+import { TMDBMovieTransformed } from "@/processes/api/types";
 
 type ToggleFavoriteProps = {
   isIcon?: boolean;
-} & Pick<Movie, "isFavorite" | "id">;
+  isFavorite: boolean;
+} & Pick<TMDBMovieTransformed, "id">;
 
 export const ToggleFavorite: FC<ToggleFavoriteProps> = ({ id, isFavorite, isIcon = false }) => {
   const { toggleFavorite } = useMovieActionsStore();

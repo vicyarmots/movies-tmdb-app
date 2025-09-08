@@ -9,7 +9,7 @@ export const ViewModeToggle = () => {
   return (
     <Button
       variant="outline"
-      size="sm"
+      size="lg"
       onClick={toggleViewMode}
       className="border-border/40 hover:border-orange-500/50"
     >

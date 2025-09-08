@@ -13,14 +13,17 @@ export async function fetchApi<TResponse = unknown, TBody = unknown>(
   endpoint: string,
   options: FetchOptions<TBody> = {},
 ): Promise<TResponse> {
-  const { method, body, credentials = "include", signal, cache } = options;
+  const { method, body, credentials, signal, cache } = options;
 
   const isFormData = body instanceof FormData;
 
   const headers: HeadersInit =
     isFormData || options.headers
       ? (options.headers ?? {})
-      : { "Content-Type": "application/json" };
+      : {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_ACCESS}`,
+        };
 
   const response = await fetch(`${BASE_API_URL}${endpoint}`, {
     cache,

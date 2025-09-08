@@ -3,13 +3,12 @@ import { ToggleFavorite } from "@/features/movie/movie-actions/ui/toggle-favorit
 import { ToggleWatched } from "@/features/movie/movie-actions/ui/toggle-watched/toggle-watched";
 import { MoviePoster } from "@/entities/movie/ui/movie-card/poster/poster";
 import { CardOverlay } from "@/entities/movie/ui/movie-card/overlay/card-overlay";
-import { MovieCardBadges } from "@/entities/movie/ui/movie-card/badges/card-badges";
 import { MovieCardInfo } from "@/entities/movie/ui/movie-card/info/card-info";
-import type { Movie } from "@/shared/utils/movies-data/movies-data";
+import type { TMDBMovieTransformed } from "@/processes/api/types";
 
 interface MovieCardProps {
-  movie: Movie;
-  onClick: (movie: Movie) => void;
+  movie: TMDBMovieTransformed;
+  onClick: (movie: TMDBMovieTransformed) => void;
 }
 
 export function MovieCard({ movie, onClick }: MovieCardProps) {
@@ -19,27 +18,27 @@ export function MovieCard({ movie, onClick }: MovieCardProps) {
       className="group relative overflow-hidden bg-card border-border/40 hover:border-orange-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10"
     >
       <div className="relative aspect-[2/3] overflow-hidden">
-        <MoviePoster title={movie.title} poster={movie.poster} />
+        <MoviePoster title={movie.title} poster_path={movie.poster_path} />
 
         <CardOverlay>
-          <ToggleWatched id={movie.id} isWatched={movie.isWatched} isIcon />
-          <ToggleFavorite id={movie.id} isFavorite={movie.isFavorite} isIcon />
+          {/* <ToggleWatched id={movie.id} isWatched={movie.is_watched} isIcon />
+          <ToggleFavorite id={movie.id} isFavorite={movie.is_favorite} isIcon /> */}
         </CardOverlay>
 
         <div className="absolute top-2 left-2 flex flex-col gap-1">
-          <MovieCardBadges
+          {/* <MovieCardBadges
             priority={movie.priority}
             isWatched={movie.isWatched}
             isFavorite={movie.isFavorite}
-          />
+          /> */}
         </div>
       </div>
 
       <MovieCardInfo
         title={movie.title}
-        releaseDate={movie.releaseDate}
-        genre={movie.genre}
-        rating={movie.rating}
+        release_date={movie.release_date}
+        genres={movie.genres}
+        vote_average={movie.vote_average}
       />
     </Card>
   );

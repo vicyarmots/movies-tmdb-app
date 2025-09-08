@@ -8,7 +8,7 @@ export const MovieDetailsOverviewCard: FC<MovieDetailsOverviewCardProps> = ({ ov
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Overview</CardTitle>
+        <CardTitle className="text-xl">Overview</CardTitle>
       </CardHeader>
       <CardContent>
         <p className="leading-relaxed">{overview}</p>

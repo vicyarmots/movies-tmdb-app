@@ -31,8 +31,11 @@ export interface TMDBMovie {
   vote_count: number | undefined;
 }
 
-export type TMDBMovieTransformed = Omit<TMDBMovie, "genre_ids"> & {
+export type TMDBMovieTransformed = Omit<TMDBMovie, "genre_ids" | "vote_average"> & {
   genres: string[];
+  is_watched?: boolean;
+  is_favorite?: boolean;
+  vote_average: number | null;
 };
 
 export interface TMDBMovieDetail {
@@ -84,6 +87,8 @@ export interface TMDBMovieDetail {
   vote_count: number | undefined;
 }
 
+export interface TMDBMovieDetailsResponse extends TMDBMovieDetail {}
+
 export const GENRE_MAP: Record<number, string> = {
   28: "Action",
   12: "Adventure",
@@ -122,3 +127,26 @@ export interface MovieImagesResponse {
   logos: TMDBMediaImage[];
   posters: TMDBMediaImage[];
 }
+
+export type RequestWithPageParam = {
+  page: number;
+};
+
+export interface GetMoviesByTabsResponse {
+  movies: TMDBMovieTransformed[];
+  totalPages: number;
+  totalResults: number;
+}
+
+export type TMDBMovieVideo = {
+  id: string;
+  iso_639_1: string;
+  iso_3166_1: string;
+  key: string;
+  name: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+};

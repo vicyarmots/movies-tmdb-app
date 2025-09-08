@@ -1,12 +1,20 @@
+import { TMDBMovieTransformed } from "@/processes/api/types";
 import { formatDate } from "@/shared/utils/date-formatter/date-formatter";
-import type { Movie } from "@/shared/utils/movies-data/movies-data";
 import { Calendar, Star } from "lucide-react";
 import type { FC } from "react";
 
-type MovieCardInfoProps = Pick<Movie, "title" | "genre" | "rating" | "releaseDate">;
+type MovieCardInfoProps = Pick<
+  TMDBMovieTransformed,
+  "title" | "genres" | "vote_average" | "release_date"
+>;
 
-export const MovieCardInfo: FC<MovieCardInfoProps> = ({ title, genre, rating, releaseDate }) => {
-  const roundedRating = rating && Math.round(rating * 10) / 10;
+export const MovieCardInfo: FC<MovieCardInfoProps> = ({
+  title,
+  genres,
+  vote_average,
+  release_date,
+}) => {
+  const roundedRating = vote_average && Math.round(vote_average * 10) / 10;
 
   return (
     <div className="p-4">
@@ -14,15 +22,24 @@ export const MovieCardInfo: FC<MovieCardInfoProps> = ({ title, genre, rating, re
         {title}
       </h3>
       <div className="space-y-1 text-sm text-muted-foreground">
-        <p>{genre}</p>
+        <div className="flex gap-1 flex-wrap">
+          {genres.map((genre) => (
+            <p key={genre}>{genre}</p>
+          ))}
+        </div>
         <div className="flex items-center gap-1">
           <Calendar className="w-3 h-3" />
-          <span>{formatDate(releaseDate)}</span>
+          <span>{formatDate(release_date)}</span>
         </div>
-        {rating && (
+        {roundedRating ? (
           <div className="flex items-center gap-1">
             <Star className="w-3 h-3 fill-current text-yellow-500" />
             <span>{roundedRating}/10</span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-1">
+            <Star className="w-3 h-3 fill-current text-yellow-500" />
+            <span>No review yet</span>
           </div>
         )}
       </div>

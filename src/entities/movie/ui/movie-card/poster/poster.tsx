@@ -1,17 +1,18 @@
 "use client";
-import { Movie } from "@/shared/utils/movies-data/movies-data";
+
+import { TMDBMovieTransformed } from "@/processes/api/types";
 import Image from "next/image";
 import { type FC, useState } from "react";
 
-type MoviePosterProps = Pick<Movie, "title" | "poster">;
+type MoviePosterProps = Pick<TMDBMovieTransformed, "title" | "poster_path">;
 
-export const MoviePoster: FC<MoviePosterProps> = ({ poster, title }) => {
+export const MoviePoster: FC<MoviePosterProps> = ({ poster_path, title }) => {
   const [imageError, setImageError] = useState(false);
   return (
     <>
       {!imageError ? (
         <Image
-          src={poster}
+          src={`${process.env.NEXT_PUBLIC_MOVIES_IMAGES}/${poster_path}`}
           alt={title}
           width={100}
           height={100}

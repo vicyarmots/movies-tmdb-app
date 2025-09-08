@@ -1,17 +1,16 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Movie } from "@/shared/utils/movies-data/movies-data";
-import { initialMovies } from "../../utils/initial-movie/initial-movie";
+import { TMDBMovieTransformed } from "@/processes/api/types";
 
 interface MoviesState {
-  movies: Movie[];
-  setMovies: (movies: Movie[]) => void;
+  movies: TMDBMovieTransformed[];
+  setMovies: (movies: TMDBMovieTransformed[]) => void;
 }
 
 export const useMoviesStore = create<MoviesState>()(
   persist(
     (set) => ({
-      movies: initialMovies,
+      movies: [],
       setMovies: (movies) => set({ movies }),
     }),
     { name: "movies-storage" },

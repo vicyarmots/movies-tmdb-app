@@ -4,10 +4,12 @@ import type { Movie } from "@/shared/utils/movies-data/movies-data";
 import { Eye, EyeOff } from "lucide-react";
 import type { FC } from "react";
 import { useMovieActionsStore } from "../../model/use-movie-actions-store";
+import { TMDBMovieTransformed } from "@/processes/api/types";
 
 type ToggleWatchedProps = {
   isIcon?: boolean;
-} & Pick<Movie, "isWatched" | "id">;
+  isWatched: boolean;
+} & Pick<TMDBMovieTransformed, "id">;
 
 export const ToggleWatched: FC<ToggleWatchedProps> = ({ id, isWatched, isIcon = false }) => {
   const { toggleWatched } = useMovieActionsStore();

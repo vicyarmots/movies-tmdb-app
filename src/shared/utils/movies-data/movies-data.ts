@@ -37,7 +37,7 @@ export interface MovieFilters {
   status: "all" | "watched" | "unwatched" | "favorites";
   genre: string;
   priority: "all" | "High" | "Medium" | "Low";
-  sortBy: "title" | "dateAdded" | "releaseDate" | "priority";
+  sortBy: "title" | "vote_rating" | "release_date" | "priority";
 }
 
 export const sampleMovies: Omit<Movie, "id" | "addedDate">[] = [
