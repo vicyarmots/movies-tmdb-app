@@ -1,6 +1,5 @@
 "use client";
 
-import { useSearchMoviesQueryStore } from "@/features/movies/search-movie-query/model/hooks/use-search-movies-query";
 import { MoviesSearchWidget } from "../movies-search/movies-search";
 import { MoviesTabsWidget } from "../movies-tabs/movies-tabs";
 import type { Movie } from "@/processes/api/services/tmdb/custom/custom.types";
@@ -9,6 +8,7 @@ import {
   useDiscoverFilterStore,
 } from "@/features/movies/movies-filters/model/use-discover-filter-store";
 import { FilteredMovies } from "../movies-filters/movies-filters";
+import { useSearchMoviesQueryStore } from "@/features/movies/search-movie-query/model/hooks/use-search-movies-query-store";
 
 interface MoviesProviderProps {
   initialMovies: Movie[];

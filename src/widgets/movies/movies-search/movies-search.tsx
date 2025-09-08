@@ -1,10 +1,7 @@
 "use client";
 
-import {
-  useSearchMovies,
-  useSearchMoviesQueryStore,
-} from "@/features/movies/search-movie-query/model/hooks/use-search-movies-query";
-
+import { useSearchMovies } from "@/features/movies/search-movie-query/model/hooks/use-search-movies-query";
+import { useSearchMoviesQueryStore } from "@/features/movies/search-movie-query/model/hooks/use-search-movies-query-store";
 import { Movies } from "../movies";
 
 export function MoviesSearchWidget() {

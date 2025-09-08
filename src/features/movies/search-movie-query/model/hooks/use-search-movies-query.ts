@@ -2,15 +2,6 @@ import { searchMovieByQueriesCustom } from "@/processes/api/services/tmdb/custom
 import { useDebounce } from "@/shared/libs/hooks/use-debaunce";
 import { useRef } from "react";
 import useSWR from "swr";
-import { create } from "zustand";
-
-export const useSearchMoviesQueryStore = create<{
-  searchQuery: string;
-  setSearchQuery: (q: string) => void;
-}>((set) => ({
-  searchQuery: "",
-  setSearchQuery: (q: string) => set({ searchQuery: q }),
-}));
 
 export const useSearchMovies = (query: string) => {
   const debouncedQuery = useDebounce(query, 500);
