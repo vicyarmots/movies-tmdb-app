@@ -5,6 +5,8 @@ import { MoviePoster } from "@/entities/movie/ui/movie-card/poster/poster";
 import { CardOverlay } from "@/entities/movie/ui/movie-card/overlay/card-overlay";
 import { MovieCardInfo } from "@/entities/movie/ui/movie-card/info/card-info";
 import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
+import { Badge } from "@/shared/ui/badge";
+import { useWatchlistStore } from "@/features/user/watchlist/model/watchlist-store";
 
 interface MovieCardProps {
   movie: Movie;
@@ -12,6 +14,7 @@ interface MovieCardProps {
 }
 
 export const MovieCardWidget = ({ movie, onClick }: MovieCardProps) => {
+  const { isInWatchlist } = useWatchlistStore();
   return (
     <Card
       onClick={() => onClick(movie)}
@@ -19,7 +22,6 @@ export const MovieCardWidget = ({ movie, onClick }: MovieCardProps) => {
     >
       <div className="relative aspect-[2/3] overflow-hidden">
         <MoviePoster title={movie.title} posterPath={movie.posterPath} />
-
         <CardOverlay>
           {/* <ToggleWatched id={movie.id} isWatched={movie.is_watched} isIcon />
           <ToggleFavorite id={movie.id} isFavorite={movie.is_favorite} isIcon /> */}
@@ -30,6 +32,7 @@ export const MovieCardWidget = ({ movie, onClick }: MovieCardProps) => {
             isWatched={movie.isWatched}
             isFavorite={movie.isFavorite}
           /> */}
+          {isInWatchlist(movie.id) && <Badge className="bg-green-500 text-white">Watchlist</Badge>}
         </div>
       </div>
 
