@@ -1,4 +1,4 @@
-import type { FetchOptions } from "@/shared/libs/fetch-api/fatch-api";
+import type { FetchOptions } from "@/shared/libs/fetch-api/fetch-api";
 import { discoverMovieOrigin } from "../../../origin/routes/discover-movies/discover-movies";
 import type { MoviesResponse } from "../../custom.types";
 import { transformMovies } from "../../transformers/tranform-movies";

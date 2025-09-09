@@ -1,4 +1,4 @@
-import { type FetchOptions, fetchApi } from "@/shared/libs/fetch-api/fatch-api";
+import { type FetchOptions, fetchApi } from "@/shared/libs/fetch-api/fetch-api";
 import { buildQueryParams } from "../../origin.helpers";
 import type { TMDBOriginMovieVideosResponse } from "../../origin.types";
 

@@ -8,10 +8,8 @@ import { MovieDetailsInfoCard } from "@/entities/movie/ui/movie-details/ui/movie
 import { MovieDetailsOverviewCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/overview-card/movie-details-overview";
 import { BackButton } from "@/entities/navigation/ui/back-button";
 import { MovieTrailerFeature } from "@/features/movie/movie-details/ui/movie-trailer/movie-trailer";
-import {
-  ToggleFavoriteStatus,
-  ToggleWatchlist,
-} from "@/features/user/watchlist/ui/watchlist-actions/watchlist-actions";
+import { ToggleFavorite } from "@/features/user/watchlist/ui/watchlist-actions/toggle-favorite/toggle-favorite";
+import { ToggleWatchlist } from "@/features/user/watchlist/ui/watchlist-actions/toggle-watchlist/toggle-watchlist";
 import type { MovieDetails } from "@/processes/api/services/tmdb/domain/custom.types";
 
 interface Props {
@@ -33,7 +31,7 @@ export const MovieDetailsWidget: FC<Props> = ({ movie }) => {
             </div>
             <CardContent className="p-4 space-y-2">
               <ToggleWatchlist movieId={movie.id} />
-              <ToggleFavoriteStatus movieId={movie.id} />
+              <ToggleFavorite movieId={movie.id} />
             </CardContent>
           </Card>
         </div>

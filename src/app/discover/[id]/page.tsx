@@ -6,7 +6,8 @@ interface MovieDetailsPageProps {
 }
 
 const MovieDetailsPage = async ({ params }: MovieDetailsPageProps) => {
-  const movie = await getMovieDetailsDomain(params.id);
+  const { id } = await params;
+  const movie = await getMovieDetailsDomain(id);
   return <MovieDetailsWidget movie={movie} />;
 };
 
