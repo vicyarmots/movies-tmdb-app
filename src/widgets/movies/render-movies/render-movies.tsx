@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import type { FC } from "react";
 import { MoviesNotFound } from "@/entities/movies/ui/not-found/not-found";
 import { MovieGridSkeleton } from "@/entities/movies/ui/skeleton/movies-skeleton";
@@ -33,11 +32,7 @@ export const RenderMovies: FC<Props> = ({ movies, isLoading, isError }) => {
     success: (
       <ViewModeProvider>
         {movies.map((movie) => (
-          <MovieCardWidget
-            key={movie.id}
-            movie={movie}
-            onClick={({ id }) => redirect(`/discover/${id}`)}
-          />
+          <MovieCardWidget key={movie.id} movie={movie} />
         ))}
       </ViewModeProvider>
     ),
