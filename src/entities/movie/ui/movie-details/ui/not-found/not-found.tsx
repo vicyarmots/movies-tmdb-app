@@ -1,6 +1,6 @@
-import { Button } from "@/shared/ui/button";
 import { ArrowLeft } from "lucide-react";
 import type { FC } from "react";
+import { Button } from "@/shared/ui/button";
 
 type MovieDetailsNotFound = {
   onBack: () => void;

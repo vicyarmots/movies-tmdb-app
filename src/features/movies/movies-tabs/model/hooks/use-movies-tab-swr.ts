@@ -1,8 +1,8 @@
+import useSWR from "swr";
 import type { MoviesResponse } from "@/processes/api/services/tmdb/domain/custom.types";
 import { getPopularMoviesDomain } from "@/processes/api/services/tmdb/domain/routes/get-popular-movies/get-popular-movies";
 import { getTopRatedMoviesDomain } from "@/processes/api/services/tmdb/domain/routes/get-top-rated-movies/get-top-rated-movies";
 import { getUpcomingMoviesDomain } from "@/processes/api/services/tmdb/domain/routes/get-upcoming-movies/get-upcoming-movies";
-import useSWR from "swr";
 
 export type MoviesTab = "popular" | "topRated" | "upcoming";
 

@@ -1,8 +1,8 @@
 "use client";
 
+import { Database, Eye, Heart } from "lucide-react";
 import { Badge } from "@/shared/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
-import { Database, Eye, Heart } from "lucide-react";
 
 export const StatisticsCard = () => {
   return (

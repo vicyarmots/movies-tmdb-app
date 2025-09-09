@@ -1,4 +1,5 @@
 "use client";
+
 import { ErrorWidget } from "@/widgets/error/error";
 
 const ErrorPage = () => {

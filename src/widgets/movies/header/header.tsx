@@ -1,12 +1,12 @@
+import type { FC } from "react";
 import {
+  type ActiveTabKey,
   activeTab as activeTabKey,
-  ActiveTabKey,
 } from "@/features/movies/movies-tabs/model/types/types";
 import { MoviesTabs } from "@/features/movies/movies-tabs/ui/movies-tabs/movies-tabs";
 import { ViewModeToggle } from "@/features/view-mode/ui/view-mode-toggle";
 import { SidebarTrigger } from "@/shared/ui/sidebar";
 import { Skeleton } from "@/shared/ui/skeleton";
-import type { FC } from "react";
 
 export type ActiveTabValue = (typeof activeTabKey)[keyof typeof activeTabKey];
 

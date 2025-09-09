@@ -1,4 +1,4 @@
-import { fetchApi, FetchOptions } from "@/shared/libs/fetch-api/fatch-api";
+import { type FetchOptions, fetchApi } from "@/shared/libs/fetch-api/fatch-api";
 import type { TMDBOriginMediaImageResponse } from "../../origin.types";
 
 interface Props {

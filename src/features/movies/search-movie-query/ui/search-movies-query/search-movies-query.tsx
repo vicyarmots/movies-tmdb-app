@@ -1,6 +1,6 @@
-import { Input } from "@/shared/ui/input";
 import { Search } from "lucide-react";
-import { useSearchMoviesQueryStore } from "../../model/hooks/use-search-movies-query-store";
+import { Input } from "@/shared/ui/input";
+import { useSearchMoviesQueryStore } from "../../model/movies-query-store";
 
 export const SearchMoviesQuery = () => {
   const { searchQuery, setSearchQuery } = useSearchMoviesQueryStore();

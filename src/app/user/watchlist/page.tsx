@@ -1,7 +1,7 @@
 import { WatchlistWidget } from "@/widgets/watchlist/watchlist";
 
-const UserWatchlist = () => {
+const UserWatchlistPage = () => {
   return <WatchlistWidget />;
 };
 
-export default UserWatchlist;
+export default UserWatchlistPage;

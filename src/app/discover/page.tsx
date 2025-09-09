@@ -1,6 +1,8 @@
 import { getTopRatedMoviesDomain } from "@/processes/api/services/tmdb/domain/routes/get-top-rated-movies/get-top-rated-movies";
 import { MoviesViewWidget } from "@/widgets/movies/movies-view/movies-view";
 
+export const dynamic = "force-dynamic";
+
 export default async function MoviesDiscoverPage() {
   const { movies, totalResults, totalPages } = await getTopRatedMoviesDomain({ page: 1 });
 

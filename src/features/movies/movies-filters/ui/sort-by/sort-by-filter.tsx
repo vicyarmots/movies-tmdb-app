@@ -1,5 +1,5 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui/select";
-import { useDiscoverFilterStore } from "../../model/use-discover-filter-store";
+import { useDiscoverFilterStore } from "../../model/discover-filter-store";
 import { type SortBy, sortOptions } from "../../utils/movies-filters.helpers";
 
 export const SortByFilter = () => {

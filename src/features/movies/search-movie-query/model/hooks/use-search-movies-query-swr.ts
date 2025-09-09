@@ -1,9 +1,9 @@
-import { searchMovieByQueriesDomain } from "@/processes/api/services/tmdb/domain/routes/search-movies-by-queries/search-movies-by-queries";
-import { useDebounce } from "@/shared/libs/hooks/use-debaunce";
 import { useRef } from "react";
 import useSWR from "swr";
+import { searchMovieByQueriesDomain } from "@/processes/api/services/tmdb/domain/routes/search-movies-by-queries/search-movies-by-queries";
+import { useDebounce } from "@/shared/libs/hooks/use-debaunce";
 
-export const useSearchMovies = (query: string) => {
+export const useSearchMoviesQuerySWR = (query: string) => {
   const debouncedQuery = useDebounce(query, 500);
   const controllerRef = useRef<AbortController | null>(null);
 

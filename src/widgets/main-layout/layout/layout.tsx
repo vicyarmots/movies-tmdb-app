@@ -1,9 +1,9 @@
 "use client";
 
-import { SidebarProvider } from "@/shared/ui/sidebar";
 import type { FC, PropsWithChildren } from "react";
-import { Sidebar } from "../sidebar/sidebar";
+import { SidebarProvider } from "@/shared/ui/sidebar";
 import { useIsMobile } from "@/shared/ui/use-mobile";
+import { Sidebar } from "../sidebar/sidebar";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const isMobile = useIsMobile();

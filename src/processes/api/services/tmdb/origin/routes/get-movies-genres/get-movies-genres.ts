@@ -1,6 +1,6 @@
-import { fetchApi, FetchOptions } from "@/shared/libs/fetch-api/fatch-api";
-import type { TMDBOriginGenreResponse } from "../../origin.types";
+import { type FetchOptions, fetchApi } from "@/shared/libs/fetch-api/fatch-api";
 import { ORIGIN_API_ROUTES } from "../../origin.routes";
+import type { TMDBOriginGenreResponse } from "../../origin.types";
 
 interface Props {
   options?: FetchOptions<unknown>;

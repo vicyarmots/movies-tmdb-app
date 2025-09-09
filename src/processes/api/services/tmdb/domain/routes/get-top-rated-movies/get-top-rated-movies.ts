@@ -1,8 +1,7 @@
-import { getMoviesGenresDomain } from "../get-movies-genres/get-movies-genres";
-
-import { transformMovies } from "../../transformers/tranform-movies";
 import { getTopRatedMoviesOrigin } from "../../../origin/routes/get-top-rated-movies/get-top-rated-movies";
 import type { MoviesResponse } from "../../custom.types";
+import { transformMovies } from "../../transformers/tranform-movies";
+import { getMoviesGenresDomain } from "../get-movies-genres/get-movies-genres";
 
 interface Props {
   page: number;

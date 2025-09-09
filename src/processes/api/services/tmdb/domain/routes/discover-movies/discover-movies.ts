@@ -1,7 +1,7 @@
-import { FetchOptions } from "@/shared/libs/fetch-api/fatch-api";
-import { transformMovies } from "../../transformers/tranform-movies";
+import type { FetchOptions } from "@/shared/libs/fetch-api/fatch-api";
 import { discoverMovieOrigin } from "../../../origin/routes/discover-movies/discover-movies";
 import type { MoviesResponse } from "../../custom.types";
+import { transformMovies } from "../../transformers/tranform-movies";
 import { getMoviesGenresDomain } from "../get-movies-genres/get-movies-genres";
 
 interface Props {

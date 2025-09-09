@@ -1,7 +1,7 @@
-import { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
+import { useEffect, useState } from "react";
+import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 import { useMoviesTabParams } from "./use-movies-tab-params";
 import { useMoviesTabSWR } from "./use-movies-tab-swr";
-import { useEffect, useState } from "react";
 
 type UseMoviesTabsProps = {
   initialMovies?: Movie[];
@@ -37,12 +37,6 @@ export const useMoviesTabs = ({
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [currentPage]);
-
-  useEffect(() => {
-    if (tabFromParams) {
-      setCurrentPage(1);
-    }
-  }, [tabFromParams]);
 
   return {
     currentTab: tabFromParams ?? initialTab,

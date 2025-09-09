@@ -1,7 +1,7 @@
-import { ClockFading, Flame, Popcorn, Star } from "lucide-react";
-import { useMoviesTabParams } from "../../model/hooks/use-movies-tab-params";
-import { activeTab, type ActiveTabKey } from "../../model/types/types";
+import { ClockFading, Flame, Star } from "lucide-react";
 import { Button } from "@/shared/ui/button";
+import { useMoviesTabParams } from "../../model/hooks/use-movies-tab-params";
+import { type ActiveTabKey, activeTab } from "../../model/types/types";
 
 const moviesTabIcons = {
   topRated: <Star />,

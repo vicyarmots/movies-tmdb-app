@@ -1,8 +1,8 @@
 "use client";
 
-import { useMovieOfficialTrailer } from "../../model/hooks/use-movie-trailer";
-import { TrailerCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/trailer-card/trailer-card";
 import { BackgoundTrailer } from "@/entities/movie/ui/movie-details/ui/backgound-trailer/backgound-trailer";
+import { TrailerCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/trailer-card/trailer-card";
+import { useMovieOfficialTrailerSWR } from "../../model/hooks/use-movie-trailer-swr";
 
 export const MovieTrailerFeature = ({
   movieId,
@@ -11,7 +11,7 @@ export const MovieTrailerFeature = ({
   movieId: number;
   isBackgound?: boolean;
 }) => {
-  const { trailer, isLoading, isError } = useMovieOfficialTrailer(movieId);
+  const { trailer, isLoading, isError } = useMovieOfficialTrailerSWR(movieId);
 
   if (isLoading) return;
   if (isError || !trailer) return;

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { ToggleThemeCardSkeleton } from "@/entities/settings/ui/skeleton/settings-skeleton";
 import { ThemeSwitchCard } from "@/entities/settings/ui/theme-switch-card/theme-switch-card";
 

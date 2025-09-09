@@ -1,14 +1,11 @@
 "use client";
 
+import { useDiscoverFilterStore } from "@/features/movies/movies-filters/model/discover-filter-store";
+import { useSearchMoviesQueryStore } from "@/features/movies/search-movie-query/model/movies-query-store";
+import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
+import { FilteredMoviesWidget } from "../movies-filters/movies-filters";
 import { MoviesSearchWidget } from "../movies-search/movies-search";
 import { MoviesTabsWidget } from "../movies-tabs/movies-tabs";
-import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
-import {
-  hasActiveFilters,
-  useDiscoverFilterStore,
-} from "@/features/movies/movies-filters/model/use-discover-filter-store";
-import { FilteredMovies } from "../movies-filters/movies-filters";
-import { useSearchMoviesQueryStore } from "@/features/movies/search-movie-query/model/hooks/use-search-movies-query-store";
 
 interface MoviesProviderProps {
   initialMovies: Movie[];
@@ -25,15 +22,15 @@ export function MoviesViewWidget({
   initialTotalPages = null,
 }: MoviesProviderProps) {
   const { searchQuery } = useSearchMoviesQueryStore();
-  const { filters } = useDiscoverFilterStore();
-  const showFiltered = hasActiveFilters(filters);
+  const { hasActiveFilters } = useDiscoverFilterStore();
+  const showFiltered = hasActiveFilters();
 
   return (
     <div>
       {searchQuery ? (
         <MoviesSearchWidget />
       ) : showFiltered ? (
-        <FilteredMovies />
+        <FilteredMoviesWidget />
       ) : (
         <MoviesTabsWidget
           initialMovies={initialMovies}

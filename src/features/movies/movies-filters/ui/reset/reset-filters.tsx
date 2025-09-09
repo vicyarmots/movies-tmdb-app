@@ -1,5 +1,5 @@
 import { Button } from "@/shared/ui/button";
-import { useDiscoverFilterStore } from "../../model/use-discover-filter-store";
+import { useDiscoverFilterStore } from "../../model/discover-filter-store";
 
 export const ResetFilters = () => {
   const { resetFilters } = useDiscoverFilterStore();

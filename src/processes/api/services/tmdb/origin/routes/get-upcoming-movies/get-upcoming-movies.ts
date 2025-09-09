@@ -1,7 +1,7 @@
-import { fetchApi, FetchOptions } from "@/shared/libs/fetch-api/fatch-api";
+import { type FetchOptions, fetchApi } from "@/shared/libs/fetch-api/fatch-api";
 import { buildQueryParams } from "../../origin.helpers";
-import type { TMDBOriginMoviesResponse } from "../../origin.types";
 import { ORIGIN_API_ROUTES } from "../../origin.routes";
+import type { TMDBOriginMoviesResponse } from "../../origin.types";
 
 interface Props {
   page: number;

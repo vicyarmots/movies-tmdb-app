@@ -1,6 +1,6 @@
-import { MovieVideo } from "@/processes/api/services/tmdb/domain/custom.types";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import type { FC } from "react";
+import type { MovieVideo } from "@/processes/api/services/tmdb/domain/custom.types";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 
 type Props = {
   trailer: MovieVideo;

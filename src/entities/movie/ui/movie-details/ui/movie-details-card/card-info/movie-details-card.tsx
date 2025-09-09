@@ -1,9 +1,9 @@
-import { MovieDetails } from "@/processes/api/services/tmdb/domain/custom.types";
+import { Calendar, Share, Star } from "lucide-react";
+import type { FC } from "react";
+import type { MovieDetails } from "@/processes/api/services/tmdb/domain/custom.types";
 import { Button } from "@/shared/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import { formatDate } from "@/shared/utils/date-formatter/date-formatter";
-import { Calendar, Share, Star } from "lucide-react";
-import type { FC } from "react";
 
 type Props = {
   movie: MovieDetails;
@@ -16,21 +16,13 @@ export const MovieDetailsInfoCard: FC<Props> = ({ movie }) => {
         <CardTitle className="text-xl">Details</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="flex gap-20">
+        <div className="flex flex-wrap gap-10">
           <div>
             <h4 className="font-medium mb-1">Genres</h4>
             <p className="text-muted-foreground w-60">
               {movie.genres?.map((g) => g.name).join(", ") || "No genres"}
             </p>
           </div>
-
-          {/* <div>
-            <h4 className="font-medium mb-1">Watch Priority</h4>
-            <div className="flex items-center gap-2">
-              <div className={`w-3 h-3 rounded-full ${getPriorityColor(movie.priority)}`} />
-              <span className="text-muted-foreground">{movie.priority}</span>
-            </div>
-          </div> */}
 
           <div>
             <h4 className="font-medium mb-1">Release Date</h4>
@@ -39,14 +31,6 @@ export const MovieDetailsInfoCard: FC<Props> = ({ movie }) => {
               <p className="text-muted-foreground">{formatDate(movie.releaseDate)}</p>
             </div>
           </div>
-
-          {/* <div>
-            <h4 className="font-medium mb-1">Added to List</h4>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-muted-foreground" />
-              <span className="text-muted-foreground">{formatAddedDate(movie.release_date)}</span>
-            </div>
-          </div> */}
 
           {!!movie.voteAverage && (
             <div>
@@ -59,20 +43,6 @@ export const MovieDetailsInfoCard: FC<Props> = ({ movie }) => {
               </div>
             </div>
           )}
-
-          {/* <div>
-            <h4 className="font-medium mb-1">Status</h4>
-            <div className="flex items-center gap-2">
-              {movie.is_watched ? (
-                <Eye className="w-4 h-4 text-green-500" />
-              ) : (
-                <EyeOff className="w-4 h-4 text-muted-foreground" />
-              )}
-              <span className="text-muted-foreground">
-                {movie.is_watched ? "Watched" : "Not Watched"}
-              </span>
-            </div>
-          </div> */}
         </div>
 
         {movie.id && (

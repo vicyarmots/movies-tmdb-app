@@ -1,7 +1,7 @@
-import { getMoviesGenresDomain } from "../get-movies-genres/get-movies-genres";
-import { transformMovies } from "../../transformers/tranform-movies";
 import { getMoviesByQueryOrigin } from "../../../origin/routes/search-movies-by-queries/search-movies-by-queries";
 import type { MoviesResponse } from "../../custom.types";
+import { transformMovies } from "../../transformers/tranform-movies";
+import { getMoviesGenresDomain } from "../get-movies-genres/get-movies-genres";
 
 interface Props {
   query: string;

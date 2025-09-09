@@ -1,8 +1,8 @@
+import { Moon, Sun } from "lucide-react";
+import type { FC } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Label } from "@/shared/ui/label";
 import { Switch } from "@/shared/ui/switch";
-import { Moon, Sun } from "lucide-react";
-import type { FC } from "react";
 
 interface Props {
   isDarkTheme: boolean;

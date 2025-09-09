@@ -1,5 +1,5 @@
-import { Button } from "@/shared/ui/button";
 import { Grid3X3, List } from "lucide-react";
+import { Button } from "@/shared/ui/button";
 import { useViewModeStore } from "../model/view-mode-store";
 
 export const ViewModeToggle = () => {

@@ -1,5 +1,5 @@
-import { Skeleton } from "@ui/skeleton";
 import { Button } from "@ui/button";
+import { Skeleton } from "@ui/skeleton";
 import { ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/shared/ui/card";
 

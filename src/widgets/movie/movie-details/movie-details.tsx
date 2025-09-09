@@ -3,16 +3,16 @@
 import { Button } from "@ui/button";
 import { Card, CardContent } from "@ui/card";
 import { Separator } from "@ui/separator";
-import { ArrowLeft, TvIcon, WatchIcon } from "lucide-react";
-import { ROUTER_PATHS } from "@/shared/libs/router/router";
+import { ArrowLeft, TvIcon } from "lucide-react";
 import { redirect } from "next/navigation";
+import type { FC } from "react";
 import { MoviePoster } from "@/entities/movie/ui/movie-card/poster/poster";
-import { MovieDetailsOverviewCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/overview-card/movie-details-overview";
 import { MovieDetailsInfoCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/card-info/movie-details-card";
-import { FC } from "react";
+import { MovieDetailsOverviewCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/overview-card/movie-details-overview";
 import { MovieTrailerFeature } from "@/features/movie/movie-details/ui/movie-trailer/movie-trailer";
-import { MovieDetails } from "@/processes/api/services/tmdb/domain/custom.types";
 import { useWatchlistStore } from "@/features/user/watchlist/model/watchlist-store";
+import type { MovieDetails } from "@/processes/api/services/tmdb/domain/custom.types";
+import { ROUTER_PATHS } from "@/shared/libs/router/router";
 
 interface Props {
   movie: MovieDetails;
@@ -56,34 +56,12 @@ export const MovieDetailsWidget: FC<Props> = ({ movie }) => {
                   Remove from watchlist
                 </Button>
               )}
-
-              {/* IMPLEMENT IN THE FUTURE */}
-              {/* <ToggleWatched id={movie.id} isWatched={true} />
-              <ToggleFavorite id={movie.id} isFavorite={true} /> */}
             </CardContent>
           </Card>
         </div>
 
         <div className="lg:col-span-2 space-y-6">
           <div>
-            {/* <div className="flex flex-wrap gap-2 mb-4">
-              <Badge className={`${getPriorityColor(movie.priority)} text-white`}>
-                {movie.priority} Priority
-              </Badge>
-              {movie.is_watched && (
-                <Badge className="bg-green-500 text-white">
-                  <Eye className="w-3 h-3 mr-1" />
-                  Watched
-                </Badge>
-              )}
-              {movie.is_favorite && (
-                <Badge className="bg-red-500 text-white">
-                  <Heart className="w-3 h-3 fill-current mr-1" />
-                  Favorite
-                </Badge>
-              )}
-            </div> */}
-
             <h1 className="text-4xl font-bold mb-2">{movie.title}</h1>
             <h4 className="text-lg text-foreground/50">{movie.tagline}</h4>
           </div>

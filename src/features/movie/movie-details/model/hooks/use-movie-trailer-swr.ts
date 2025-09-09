@@ -1,8 +1,8 @@
 import useSWR from "swr";
-import { getMovieOfficialTrailerDomain } from "@/processes/api/services/tmdb/domain/routes/get-movie-trailer/get-movie-official-trailer";
 import type { MovieVideo } from "@/processes/api/services/tmdb/domain/custom.types";
+import { getMovieOfficialTrailerDomain } from "@/processes/api/services/tmdb/domain/routes/get-movie-trailer/get-movie-official-trailer";
 
-export const useMovieOfficialTrailer = (movieId: number) => {
+export const useMovieOfficialTrailerSWR = (movieId: number) => {
   const { data, error, isValidating } = useSWR<MovieVideo | null>(
     movieId ? `movie-trailer-${movieId}` : null,
     () => getMovieOfficialTrailerDomain(movieId),

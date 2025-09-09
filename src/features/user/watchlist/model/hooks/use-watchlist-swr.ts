@@ -1,8 +1,8 @@
-import { getMovieByIdDomain } from "@/processes/api/services/tmdb/domain/routes/get-movie-by-id/get-movie-by-id";
 import useSWR from "swr";
-import { useWatchlistStore } from "../model/watchlist-store";
+import { getMovieByIdDomain } from "@/processes/api/services/tmdb/domain/routes/get-movie-by-id/get-movie-by-id";
+import { useWatchlistStore } from "../watchlist-store";
 
-export const useWatchlistMovies = () => {
+export const useWatchlistMoviesSWR = () => {
   const ids = useWatchlistStore((state) => state.ids);
 
   const { data, error, isLoading } = useSWR(

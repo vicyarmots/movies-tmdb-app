@@ -12,6 +12,7 @@ interface DiscoverFilterStore {
   filters: DiscoverFilters;
   setFilters: (newFilters: Partial<DiscoverFilters>) => void;
   resetFilters: () => void;
+  hasActiveFilters: () => boolean;
 }
 
 export const DEFAULT_FILTERS: DiscoverFilters = {
@@ -19,7 +20,7 @@ export const DEFAULT_FILTERS: DiscoverFilters = {
   withGenres: [],
 };
 
-export const useDiscoverFilterStore = create<DiscoverFilterStore>((set) => ({
+export const useDiscoverFilterStore = create<DiscoverFilterStore>((set, get) => ({
   filters: DEFAULT_FILTERS,
   setFilters: (newFilters) =>
     set((state) => ({
@@ -29,15 +30,13 @@ export const useDiscoverFilterStore = create<DiscoverFilterStore>((set) => ({
     set({
       filters: DEFAULT_FILTERS,
     }),
+  hasActiveFilters: () => {
+    const filters = get().filters;
+    return (
+      filters.sortBy !== DEFAULT_FILTERS.sortBy ||
+      filters.withGenres.length > 0 ||
+      filters.releaseDateGte !== DEFAULT_FILTERS.releaseDateGte ||
+      filters.releaseDateLte !== DEFAULT_FILTERS.releaseDateLte
+    );
+  },
 }));
-
-export function hasActiveFilters(filters: DiscoverFilters) {
-  if (filters.sortBy !== DEFAULT_FILTERS.sortBy) return true;
-
-  if (filters.withGenres.length > 0) return true;
-
-  if (filters.releaseDateGte || filters.releaseDateLte !== DEFAULT_FILTERS.releaseDateLte)
-    return true;
-
-  return false;
-}
