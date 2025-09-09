@@ -1,6 +1,6 @@
 import { getPopularMoviesOrigin } from "../../../origin/routes/get-popular-movies/get-popular-movies";
+import { transformMovies } from "../../adapters/adapter-movies";
 import type { MoviesResponse } from "../../custom.types";
-import { transformMovies } from "../../transformers/tranform-movies";
 import { getMoviesGenresDomain } from "../get-movies-genres/get-movies-genres";
 
 interface Props {

@@ -1,5 +1,5 @@
 import { getMovieMediaImagesOrigin } from "../../../origin/routes/get-movie-media-images/get-movie-media-images";
-import { transformMediaImages } from "../../transformers/transform-media-image";
+import { transformMediaImages } from "../../adapters/adapter-media-image";
 
 interface Props {
   id: number;
