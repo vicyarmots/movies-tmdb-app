@@ -98,12 +98,6 @@ importers:
       cmdk:
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@19.1.9(@types/react@19.1.12))(@types/react@19.1.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      effector:
-        specifier: ^23.4.2
-        version: 23.4.2
-      effector-react:
-        specifier: ^23.3.0
-        version: 23.3.0(effector@23.4.2)(react@19.1.0)
       embla-carousel-react:
         specifier: ^8.6.0
         version: 8.6.0(react@19.1.0)
@@ -113,9 +107,6 @@ importers:
       input-otp:
         specifier: ^1.4.2
         version: 1.4.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      lodash.isequal:
-        specifier: ^4.5.0
-        version: 4.5.0
       lucide-react:
         specifier: ^0.542.0
         version: 0.542.0(react@19.1.0)
@@ -1349,17 +1340,6 @@ packages:
   detect-node-es@1.1.0:
     resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
 
-  effector-react@23.3.0:
-    resolution: {integrity: sha512-QR0+x1EnbiWhO80Yc0GVF+I9xCYoxBm3t+QLB5Wg+1uY1Q1BrSWDmKvJaJJZ/+9BU4RAr25yS5J2EkdWnicu8g==}
-    engines: {node: '>=11.0.0'}
-    peerDependencies:
-      effector: ^23.0.0
-      react: '>=16.8.0 <20.0.0'
-
-  effector@23.4.2:
-    resolution: {integrity: sha512-Uae07sVa6yilnO9FhjFvLVkuakpKTHqn4bIoFxEuDsvNKfFtidLHGi1mv3bjaoJUxj3ldqZDAg3kvELVgMWSjw==}
-    engines: {node: '>=11.0.0'}
-
   embla-carousel-react@8.6.0:
     resolution: {integrity: sha512-0/PjqU7geVmo6F734pmPqpyHqiM99olvyecY7zdweCw+6tKEXnrE90pBiBbMMU8s5tICemzpQ3hi5EpxzGW+JA==}
     peerDependencies:
@@ -1473,10 +1453,6 @@ packages:
   lightningcss@1.30.1:
     resolution: {integrity: sha512-xi6IyHML+c9+Q3W0S4fCQJOym42pyurFiJUHEcEyHS0CeKzia4yZDEsLlqOFykxOdHpNy0NmvVO31vcSqAxJCg==}
     engines: {node: '>= 12.0.0'}
-
-  lodash.isequal@4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lucide-react@0.542.0:
     resolution: {integrity: sha512-w3hD8/SQB7+lzU2r4VdFyzzOzKnUjTZIF/MQJGSSvni7Llewni4vuViRppfRAa2guOsY5k4jZyxw/i9DQHv+dw==}
@@ -2862,14 +2838,6 @@ snapshots:
 
   detect-node-es@1.1.0: {}
 
-  effector-react@23.3.0(effector@23.4.2)(react@19.1.0):
-    dependencies:
-      effector: 23.4.2
-      react: 19.1.0
-      use-sync-external-store: 1.5.0(react@19.1.0)
-
-  effector@23.4.2: {}
-
   embla-carousel-react@8.6.0(react@19.1.0):
     dependencies:
       embla-carousel: 8.6.0
@@ -2953,8 +2921,6 @@ snapshots:
       lightningcss-linux-x64-musl: 1.30.1
       lightningcss-win32-arm64-msvc: 1.30.1
       lightningcss-win32-x64-msvc: 1.30.1
-
-  lodash.isequal@4.5.0: {}
 
   lucide-react@0.542.0(react@19.1.0):
     dependencies:
