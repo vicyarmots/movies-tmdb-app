@@ -9,7 +9,7 @@
     "type": "git",
     "url": "git@github.com:vicyarmots/movies-tmdb-app.git"
   },
-  "homepage": "https://your-project.vercel.app",
+  "homepage": "https://movies-tmdb-app.vercel.app",
   "bugs": {
     "url": "https://github.com/vicyarmots/movies-tmdb-app/issues"
   },
