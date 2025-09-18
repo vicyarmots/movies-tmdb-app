@@ -1,7 +1,7 @@
 import { Film } from "lucide-react";
 import { ReloadButton } from "@/entities/navigation/ui/reload";
 
-export const NotFound = () => {
+export const NotFoundWidget = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center w-full h-screen">
       <Film className="w-16 h-16 text-muted-foreground mb-4" />

@@ -3,7 +3,7 @@
 import { useMoviesTabs } from "@/features/movies/movies-tabs/model/hooks/use-movies-tab";
 import type { ActiveTabKey } from "@/features/movies/movies-tabs/model/types/types";
 import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
-import { Movies } from "../movies";
+import { Movies } from "../../movies";
 
 interface Props {
   initialMovies: Movie[];
@@ -12,7 +12,7 @@ interface Props {
   initialTotalPages?: number | null;
 }
 
-export function MoviesTabsWidget({ initialMovies, initialTab, initialPage }: Props) {
+export function MoviesTabsViewWidget({ initialMovies, initialTab, initialPage }: Props) {
   const {
     movies,
     isLoading,

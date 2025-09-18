@@ -1,7 +1,7 @@
 import { ReloadButton } from "@/entities/navigation/ui/reload";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
 
-export const ErrorWidget = () => {
+export const Error500Widget = () => {
   return (
     <Card>
       <CardHeader>

@@ -18,7 +18,7 @@ export const WatchlistWidget = () => {
       </header>
       <Separator />
       <div className="w-full py-10">
-        {<RenderMovies movies={movies} isLoading={isLoading} isError={isError} />}
+        <RenderMovies movies={movies} isLoading={isLoading} isError={isError} />
       </div>
     </div>
   );

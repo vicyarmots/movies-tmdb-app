@@ -3,6 +3,7 @@ import {
   type ActiveTabKey,
   activeTab as activeTabKey,
 } from "@/features/movies/movies-tabs/model/types/types";
+
 import { MoviesTabs } from "@/features/movies/movies-tabs/ui/movies-tabs/movies-tabs";
 import { ViewModeToggle } from "@/features/view-mode/ui/view-mode-toggle";
 import { SidebarTrigger } from "@/shared/ui/sidebar";

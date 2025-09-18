@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 import { useMoviesTabParams } from "./use-movies-tab-params";
 import { useMoviesTabSWR } from "./use-movies-tab-swr";
@@ -32,11 +32,10 @@ export const useMoviesTabs = ({
     },
   });
 
-  useEffect(() => {
-    if (currentPage > 1) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, [currentPage]);
+  const onChangeCurrentPage = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return {
     currentTab: tabFromParams ?? initialTab,
@@ -48,6 +47,6 @@ export const useMoviesTabs = ({
     totalPages,
     totalResults,
     currentPage,
-    setCurrentPage,
+    setCurrentPage: onChangeCurrentPage,
   };
 };

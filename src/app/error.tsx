@@ -1,11 +1,11 @@
 "use client";
 
-import { ErrorWidget } from "@/widgets/error/error";
+import { Error500Widget } from "@/widgets/error/error";
 
 const ErrorPage = () => {
   return (
     <div className="flex items-center justify-center">
-      <ErrorWidget />
+      <Error500Widget />
     </div>
   );
 };

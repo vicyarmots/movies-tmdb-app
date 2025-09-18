@@ -1,10 +1,10 @@
 "use client";
 
-import { useSearchMoviesQuerySWR } from "@/features/movies/search-movie-query/model/hooks/use-search-movies-query-swr";
-import { useSearchMoviesQueryStore } from "@/features/movies/search-movie-query/model/movies-query-store";
-import { Movies } from "../movies";
+import { useSearchMoviesQuerySWR } from "@/features/movies/search-movies/model/hooks/use-search-movies-query-swr";
+import { useSearchMoviesQueryStore } from "@/features/movies/search-movies/model/movies-query-store";
+import { Movies } from "../../movies";
 
-export function MoviesSearchWidget() {
+export function MoviesSearchViewWidget() {
   const { searchQuery } = useSearchMoviesQueryStore();
   const { movies, isLoading, isError, totalResults } = useSearchMoviesQuerySWR(searchQuery);
 

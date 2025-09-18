@@ -1,11 +1,11 @@
 "use client";
 
 import { useDiscoverFilterStore } from "@/features/movies/movies-filters/model/discover-filter-store";
-import { useSearchMoviesQueryStore } from "@/features/movies/search-movie-query/model/movies-query-store";
+import { useSearchMoviesQueryStore } from "@/features/movies/search-movies/model/movies-query-store";
 import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
-import { FilteredMoviesWidget } from "../movies-filters/movies-filters";
-import { MoviesSearchWidget } from "../movies-search/movies-search";
-import { MoviesTabsWidget } from "../movies-tabs/movies-tabs";
+import { MoviesFilteredViewWidget } from "./filtered/movies-filtered-view";
+import { MoviesSearchViewWidget } from "./search/movies-search-view";
+import { MoviesTabsViewWidget } from "./tabs/movies-tabs-view";
 
 interface MoviesProviderProps {
   initialMovies: Movie[];
@@ -28,11 +28,11 @@ export function MoviesViewWidget({
   return (
     <div>
       {searchQuery ? (
-        <MoviesSearchWidget />
+        <MoviesSearchViewWidget />
       ) : showFiltered ? (
-        <FilteredMoviesWidget />
+        <MoviesFilteredViewWidget />
       ) : (
-        <MoviesTabsWidget
+        <MoviesTabsViewWidget
           initialMovies={initialMovies}
           initialTab={initialTab}
           initialPage={initialPage}

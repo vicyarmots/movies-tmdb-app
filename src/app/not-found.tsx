@@ -1,7 +1,7 @@
-import { NotFound } from "@/widgets/not-found/not-found";
+import { NotFoundWidget } from "@/widgets/not-found/not-found";
 
 const NotFoundPage = () => {
-  return <NotFound />;
+  return <NotFoundWidget />;
 };
 
 export default NotFoundPage;
