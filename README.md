@@ -29,7 +29,16 @@ Vercel link - https://movies-tmdb-app.vercel.app
 - **Framework:** Next.js + Turbopack
 - **Styling:** TailwindCSS + Shadcn/UI + RadixUI
 - **Data Fetching:** SWR
+- **State management:** Zustand 
 - **Language:** TypeScript
+
+---
+
+flowchart TD
+    A[Origin<br/>Raw source: TMDB proxy / other API] --> B[Domain<br/>Domain APIs and services<br/>Normalization and model transformation]
+    B --> C[App<br/>SSR + Streaming<br/>Next.js App Router]
+    C --> D[SWR<br/>Cache and feature-level revalidation]
+    D --> E[Client<br/>UI: Entities + Widgets]
 
 ---
 
