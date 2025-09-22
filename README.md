@@ -34,11 +34,13 @@ Vercel link - https://movies-tmdb-app.vercel.app
 
 ---
 
+```mermaid
 flowchart TD
     A[Origin<br/>Raw source: TMDB proxy / other API] --> B[Domain<br/>Domain APIs and services<br/>Normalization and model transformation]
     B --> C[App<br/>SSR + Streaming<br/>Next.js App Router]
     C --> D[SWR<br/>Cache and feature-level revalidation]
-    D --> E[Client<br/>UI: Entities + Widgets]
+    D --> E[Client<br/>UI: Entities + Widgets] 
+```
 
 ---
 
