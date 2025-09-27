@@ -5,7 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Navigation } from "@/entities/navigation/ui/navigation";
 import { ROUTER_PATHS } from "@/shared/libs/router/router";
-import { SidebarContent, SidebarHeader, Sidebar as SidebarUI } from "@/shared/ui/sidebar";
+import {
+  SidebarContent,
+  SidebarHeader,
+  Sidebar as SidebarUI,
+} from "@/shared/ui/sidebar";
 import { MovieFiltersWidget } from "../../movies/movies-filters/movies-filters";
 
 export const Sidebar = () => {

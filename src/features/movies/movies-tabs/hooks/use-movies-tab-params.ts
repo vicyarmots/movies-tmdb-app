@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { type ActiveTabKey, activeTab } from "../types/types";
+import { type ActiveTabKey, activeTab } from "../model/types/types";
 
 const DEFAULT_TAB: ActiveTabKey = "topRated";
 

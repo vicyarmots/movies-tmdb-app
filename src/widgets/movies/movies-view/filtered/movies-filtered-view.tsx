@@ -1,4 +1,4 @@
-import { useDiscoverFilterMoviesSWR } from "@/features/movies/movies-filters/model/hooks/use-discover-filter-movies-swr";
+import { useDiscoverFilterMoviesSWR } from "@/features/movies/movies-filters/hooks/use-discover-filter-movies-swr";
 import { Movies } from "../../movies";
 
 export const MoviesFilteredViewWidget = () => {

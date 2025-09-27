@@ -1,8 +1,8 @@
 "use client";
 
-import { Separator } from "@ui/separator";
-import { useWatchlistMoviesSWR } from "@/features/user/watchlist/model/hooks/use-watchlist-swr";
+import { useWatchlistMoviesSWR } from "@/features/user/watchlist/hooks/use-watchlist-swr";
 import { ViewModeToggle } from "@/features/view-mode/ui/view-mode-toggle";
+import { Separator } from "@/shared/ui/separator";
 import { SidebarTrigger } from "@/shared/ui/sidebar";
 import { RenderMovies } from "../movies/render-movies/render-movies";
 

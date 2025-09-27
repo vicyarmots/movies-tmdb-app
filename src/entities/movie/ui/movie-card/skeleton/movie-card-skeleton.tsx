@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@ui/card";
-import { Skeleton } from "@ui/skeleton";
+import { Card, CardContent } from "@/shared/ui/card";
+import { Skeleton } from "@/shared/ui/skeleton";
 
 interface Props {
   viewMode: "grid" | "list";

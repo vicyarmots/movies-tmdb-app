@@ -1,5 +1,5 @@
 import { StatisticsCard } from "@/entities/settings/ui/statistics-card/statistics-card";
-import { ThemeSwitch } from "@/features/settings/theme/model/theme-switch";
+import { ThemeSwitch } from "@/features/settings/theme/theme-switch";
 import { Separator } from "@/shared/ui/separator";
 import { SidebarTrigger } from "@/shared/ui/sidebar";
 

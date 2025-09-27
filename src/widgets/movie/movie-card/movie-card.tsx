@@ -4,8 +4,9 @@ import { MovieCardInfo } from "@/entities/movie/ui/movie-card/info/card-info";
 import { CardOverlay } from "@/entities/movie/ui/movie-card/overlay/card-overlay";
 import { MoviePoster } from "@/entities/movie/ui/movie-card/poster/poster";
 import { useWatchlistStatusStore } from "@/features/user/watchlist/model/status/watchlist-status-store";
-import { useWatchlistStore } from "@/features/user/watchlist/model/watchlist-store";
+import { useWatchlistStore } from "@/features/user/watchlist/model/watchlist/watchlist-store";
 import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
+import { ROUTER_PATHS } from "@/shared/libs/router/router";
 import { Badge } from "@/shared/ui/badge";
 import { Card } from "@/shared/ui/card";
 
@@ -21,7 +22,7 @@ export const MovieCardWidget = ({ movie }: MovieCardProps) => {
   return (
     <Link
       href={{
-        pathname: `/discover/${movie.id}`,
+        pathname: `${ROUTER_PATHS.DISCOVER}/${movie.id}`,
         query: searchParams.get("tab"),
       }}
     >

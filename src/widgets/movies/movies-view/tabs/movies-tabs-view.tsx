@@ -1,6 +1,6 @@
 "use client";
 
-import { useMoviesTabs } from "@/features/movies/movies-tabs/model/hooks/use-movies-tab";
+import { useMoviesTabs } from "@/features/movies/movies-tabs/hooks/use-movies-tab";
 import type { ActiveTabKey } from "@/features/movies/movies-tabs/model/types/types";
 import type { Movie } from "@/processes/api/services/tmdb/domain/custom.types";
 import { Movies } from "../../movies";

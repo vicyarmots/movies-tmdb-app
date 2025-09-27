@@ -1,6 +1,6 @@
 import { ClockFading, Flame, Star } from "lucide-react";
 import { Button } from "@/shared/ui/button";
-import { useMoviesTabParams } from "../../model/hooks/use-movies-tab-params";
+import { useMoviesTabParams } from "../../hooks/use-movies-tab-params";
 import { type ActiveTabKey, activeTab } from "../../model/types/types";
 
 const moviesTabIcons = {

@@ -19,6 +19,6 @@ export const useViewModeStore = create<ViewModeState>()(
     }),
     {
       name: "view-mode-storage",
-    },
-  ),
+    }
+  )
 );

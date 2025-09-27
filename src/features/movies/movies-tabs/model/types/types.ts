@@ -5,4 +5,3 @@ export const activeTab = {
 } as const;
 
 export type ActiveTabKey = keyof typeof activeTab;
-

@@ -1,7 +1,7 @@
-import { Button } from "@ui/button";
-import { Skeleton } from "@ui/skeleton";
 import { ArrowLeft } from "lucide-react";
+import { Button } from "@/shared/ui/button";
 import { Card, CardContent, CardHeader } from "@/shared/ui/card";
+import { Skeleton } from "@/shared/ui/skeleton";
 
 export function MovieDetailSkeleton() {
   return (

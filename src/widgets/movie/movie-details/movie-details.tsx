@@ -1,7 +1,5 @@
 "use client";
 
-import { Card, CardContent } from "@ui/card";
-import { Separator } from "@ui/separator";
 import type { FC } from "react";
 import { MoviePoster } from "@/entities/movie/ui/movie-card/poster/poster";
 import { MovieDetailsInfoCard } from "@/entities/movie/ui/movie-details/ui/movie-details-card/card-info/movie-details-card";
@@ -11,6 +9,8 @@ import { MovieTrailerFeature } from "@/features/movie/movie-details/ui/movie-tra
 import { ToggleFavorite } from "@/features/user/watchlist/ui/watchlist-actions/toggle-favorite/toggle-favorite";
 import { ToggleWatchlist } from "@/features/user/watchlist/ui/watchlist-actions/toggle-watchlist/toggle-watchlist";
 import type { MovieDetails } from "@/processes/api/services/tmdb/domain/custom.types";
+import { Card, CardContent } from "@/shared/ui/card";
+import { Separator } from "@/shared/ui/separator";
 
 interface Props {
   movie: MovieDetails;

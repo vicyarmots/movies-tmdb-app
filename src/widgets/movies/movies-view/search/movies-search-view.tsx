@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchMoviesQuerySWR } from "@/features/movies/search-movies/model/hooks/use-search-movies-query-swr";
+import { useSearchMoviesQuerySWR } from "@/features/movies/search-movies/hooks/use-search-movies-query-swr";
 import { useSearchMoviesQueryStore } from "@/features/movies/search-movies/model/movies-query-store";
 import { Movies } from "../../movies";
 

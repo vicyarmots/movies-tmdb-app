@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import { discoverMoviesDomain } from "@/processes/api/services/tmdb/domain/routes/discover-movies/discover-movies";
-import { useDiscoverFilterStore } from "../discover-filter-store";
+import { useDiscoverFilterStore } from "../model/discover-filter-store";
 
 export const useDiscoverFilterMoviesSWR = () => {
   const { filters } = useDiscoverFilterStore();
